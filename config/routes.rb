@@ -1,4 +1,13 @@
 TodoApp::Application.routes.draw do
+  get "home/index"
+
+  resources :todos
+
+
+  resources :users
+
+  root :to => 'home#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
