@@ -38,6 +38,8 @@ class TodosController < ApplicationController
   # GET /todos/1/edit
   def edit
     @todo = Todo.find(params[:id])
+    @todo.user = User.find_by_id(params[:user_id])
+    @user = @todo.user
   end
 
   # POST /todos
@@ -48,7 +50,7 @@ class TodosController < ApplicationController
     @user = @todo.user
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to user_todo_path(@user), notice: 'Todo was successfully created.' }
+        format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }

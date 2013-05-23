@@ -1,9 +1,16 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :username
+  attr_accessible :email, :username, :password, :password_confirmation
+  has_secure_password
+
+  before_save { |user| user.email = email.downcase }
 
   has_many :todo, :dependent => :destroy
 
-  validates :username, :presence => true
-  validates :password, :presence => true
-  validates :email, :presence => true
+  validates :username, :presence => true, length: { maximum: 50 }
+  validates :password, :presence => true, length: { minimum: 6 }
+  validates :password_confirmation, presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, :presence => true, 
+  			format: { with: VALID_EMAIL_REGEX },
+  			uniqueness: { case_sensitive: false }
 end
