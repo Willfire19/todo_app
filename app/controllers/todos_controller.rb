@@ -2,6 +2,7 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
+    #@user = User.find(params[:user_id])
     @todos = Todo.all
 
     respond_to do |format|
@@ -14,7 +15,8 @@ class TodosController < ApplicationController
   # GET /todos/1.json
   def show
     @todo = Todo.find(params[:id])
-
+    @todo.user = User.find_by_id(params[:user_id])
+    @user = @todo.user
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @todo }
@@ -24,6 +26,7 @@ class TodosController < ApplicationController
   # GET /todos/new
   # GET /todos/new.json
   def new
+    @user = User.find_by_id(params[:user_id])
     @todo = Todo.new
 
     respond_to do |format|
@@ -41,11 +44,12 @@ class TodosController < ApplicationController
   # POST /todos.json
   def create
     @todo = Todo.new(params[:todo])
-
+    @todo.user = User.find_by_id(params[:user_id])
+    @user = @todo.user
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
-        format.json { render json: @todo, status: :created, location: @todo }
+        format.html { redirect_to user_todo_path(@user), notice: 'Todo was successfully created.' }
+        format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
         format.json { render json: @todo.errors, status: :unprocessable_entity }

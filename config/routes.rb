@@ -1,13 +1,12 @@
 TodoApp::Application.routes.draw do
   get "home/index"
 
+  resources :users do
   resources :todos
-
-
-  resources :users
-
+end
+  
+  match '/signup', to: 'users#new'
   root :to => 'home#index'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
