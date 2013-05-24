@@ -3,7 +3,8 @@ class TodosController < ApplicationController
   # GET /todos.json
   def index
     #@user = User.find(params[:user_id])
-    @todos = Todo.all
+    @user = User.find_by_id(params[:user_id])
+    @todo = user.todos
 
     respond_to do |format|
       format.html # index.html.erb

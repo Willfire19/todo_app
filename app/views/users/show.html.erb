@@ -1,3 +1,9 @@
+<% provide(:title, @user.username) %>
+<title><%= yield :title %></title>
+<h1>
+	<%= yield :title %>
+	<%= gravatar_for @user %>
+</h1>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -18,4 +24,4 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
-<%= link_to 'Go to Your Todos!', user_todo_path %>
+<%= link_to 'Go to Your Todos!', user_todos_path(@user) %>
