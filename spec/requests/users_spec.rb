@@ -14,8 +14,15 @@ describe "Users" do
 	it { should respond_to(:password_digest) }
 	it { should respond_to(:password) }
 	it { should respond_to(:password_confirmation) }
+	it { should respond_to(:remember_token) }
+	it { should respond_to(:authenticate) }
 
 	it { should be_valid }
+
+	describe "remember token" do 
+		before { @user.save }
+		its(:remember_token) { should_not be_blank }
+	end
 
 	describe "when password is not present" do
 	  before { @user.password = @user.password_confirmation = " " }
@@ -61,7 +68,7 @@ describe "Users" do
   describe "GET /users" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get users_index_path
+      get users_path
       response.status.should be(200)
     end
   end
