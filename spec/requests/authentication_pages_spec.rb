@@ -100,6 +100,20 @@ describe "Authentication" do
 					it { should have_selector('title', text: 'Sign in') }
 				end
 			end
+
+			describe "in the Todos controller" do
+				let(:user) { FactoryGirl.create(:user) }
+
+				describe "submitting to the create action" do
+					before { post user_todos_path(user) }
+					specify { response.should redirect_to(signin_path) }
+				end
+
+				describe "submitting to the destroy action" do
+					before { delete user_todo_path(user, FactoryGirl.create(:todo)) }
+					specify { response.should redirect_to(signin_path) }
+				end
+			end
 		end
 
 		describe "as non-admin user" do
@@ -110,7 +124,7 @@ describe "Authentication" do
 
 			describe "submitting a DELETE request to the Users#destroy action" do
 				before { delete user_path(user) }
-				specify { respnse.should redirect_to(root_path) }
+				specify { response.should redirect_to(root_path) }
 			end
 		end
 	end

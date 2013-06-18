@@ -50,6 +50,23 @@ describe "User pages" do
     end
   end
 
+  describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:todo, user: user, entry: "Michael Bolt") }
+    let!(:m2) { FactoryGirl.create(:todo, user: user, entry: "David Givens") }
+
+    before { visit user_path(user) }
+
+    it { should have_selector('h1',     text: user.username) }
+    it { should have_selector('title',  text: user.username) }
+
+    describe "todos" do
+      it { should have_content(m1.entry) }
+      it { should have_content(m2.entry) }
+      it { should have_content(user.todos.count) }
+    end
+  end
+
   describe "signup page" do
     before { visit signup_path }
 

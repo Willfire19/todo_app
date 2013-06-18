@@ -16,5 +16,12 @@ namespace :db  do
 									 password: password,
 									 password_confirmation: password)
 		end
+
+		users = User.all(limit: 6)
+		50.times do
+			entry = Faker::Lorem.sentence(5)
+			assignedDate = 01-01-2103
+			users.each { |user| user.todos.create!(entry: entry, assignedDate: assignedDate) }
+		end
 	end	
 end

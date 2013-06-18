@@ -9,4 +9,10 @@ FactoryGirl.define  do
 			admin true
 		end
 	end
+
+	factory :todo do
+		entry "Lorem ipsum"
+		user
+		assignedDate 01-01-2013
+	end
 end

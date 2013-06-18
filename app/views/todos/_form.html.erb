@@ -1,18 +1,8 @@
 <%= form_for([@user, @todo]) do |f| %>
-  <% if @todo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
-
-      <ul>
-      <% @todo.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <div class="field">
-    <%= f.label :entry %><br />
+    <%= f.label :entry, 'Entry' %><br />
     <%= f.text_field :entry %>
   </div>
   <div class="field">
@@ -28,6 +18,6 @@
     <%= f.number_field :priority %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit', class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

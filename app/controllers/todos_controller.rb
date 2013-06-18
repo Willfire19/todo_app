@@ -1,10 +1,13 @@
 class TodosController < ApplicationController
+  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :correct_user, only: :destroy
+
   # GET /todos
   # GET /todos.json
   def index
     #@user = User.find(params[:user_id])
     @user = User.find_by_id(params[:user_id])
-    @todo = user.todos
+    @todo = @user.todos
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +30,7 @@ class TodosController < ApplicationController
   # GET /todos/new
   # GET /todos/new.json
   def new
-    @user = User.find_by_id(params[:user_id])
+    @user = current_user
     @todo = Todo.new
 
     respond_to do |format|
@@ -46,14 +49,17 @@ class TodosController < ApplicationController
   # POST /todos
   # POST /todos.json
   def create
-    @todo = Todo.new(params[:todo])
-    @todo.user = User.find_by_id(params[:user_id])
+    @todo = current_user.todos.build(params[:todo])
+    #@todo.user = User.find_by_id(params[:user_id])
+    @todo.user = current_user
     @user = @todo.user
     respond_to do |format|
       if @todo.save
-        format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created.' }
+        #format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created.' }
+        format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created!' }
         format.json { render json: @user, status: :created, location: @user }
       else
+        @feed_items = []
         format.html { render action: "new" }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
@@ -79,12 +85,18 @@ class TodosController < ApplicationController
   # DELETE /todos/1
   # DELETE /todos/1.json
   def destroy
-    @todo = Todo.find(params[:id])
     @todo.destroy
 
     respond_to do |format|
-      format.html { redirect_to todos_url }
+      format.html { redirect_to root_url }
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def correct_user
+      @todo = current_user.todos.find_by_id(params[:id])
+      redirect_to root_url if @todo.nil?
+    end
 end

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
-  has_many :todo, :dependent => :destroy
+  has_many :todos, :dependent => :destroy
 
   validates :username, :presence => true, length: { maximum: 50 }
   validates :password, :presence => true, length: { minimum: 6 }
@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
   			format: { with: VALID_EMAIL_REGEX },
   			uniqueness: { case_sensitive: false }
 
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Todo.where("user_id = ?", id)
+  end
+  
   private
 
     def create_remember_token

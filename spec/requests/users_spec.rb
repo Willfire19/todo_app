@@ -17,6 +17,8 @@ describe "Users" do
 	it { should respond_to(:remember_token) }
 	it { should respond_to(:admin) }
 	it { should respond_to(:authenticate) }
+	it { should respond_to(:todos) }
+	it { should respond_to(:feed) }
 
 	it { should be_valid }
 	it { should_not be_admin }
@@ -74,15 +76,37 @@ describe "Users" do
 	  end
 	end
 
+	describe "todo associations" do
 
+		before { @user.save }
+		let!(:older_todo) do
+			FactoryGirl.create(:todo, user: @user, created_at: 1.day.ago)
+		end
+		let!(:newer_todo) do
+			FactoryGirl.create(:todo, user: @user, created_at: 1.hour.ago)
+		end
 
-  describe "GET /users" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get users_path
-      response.status.should be(200)
-    end
-  end
+		it "should have the right todos in the right order" do
+			@user.todos.should == [newer_todo, older_todo]
+		end
 
+		it "should destroy associated todos" do
+			todos = @user.todos.dup
+			@user.destroy
+			todos.should_not be_empty
+			todos.each do |todo|
+				Todo.find_by_id(todo.id).should be_nil
+			end
+		end
 
+		describe "status" do
+			let(:unfollowed_post) do
+				FactoryGirl.create(:todo, user: FactoryGirl.create(:user))
+			end
+
+			its(:feed) { should include(newer_micropost) }
+			its(:feed) { should include(older_micropost) }
+			its(:feed) { should_not include(unfollowed_post) }
+		end
+	end
 end

@@ -21,6 +21,15 @@
   <%= @user.email %>
 </p>
 
+<div class="span8">
+	<% if @user.todos.any? %>
+	<b>Todos (<%= @user.todos.count %>)</b>
+	<ol class="todos">
+		<%= render @todos %>
+	</ol>
+	<%= will_paginate @todos %>
+	<% end %>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
