@@ -4,6 +4,12 @@
 	<%= yield :title %>
 	<%= gravatar_for @user %>
 </h1>
+<section>
+	<%= render 'shared/stats' %>
+</section>
+<div class="span8">
+	<%= render 'follow_form' if signed_in? %>
+</div>
 <p id="notice"><%= notice %></p>
 
 <p>

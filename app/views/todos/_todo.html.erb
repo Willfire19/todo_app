@@ -3,8 +3,8 @@
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(todo.created_at) %> ago.
 	</span>
-	<% if current_user?(micropost.user) %>
-		<%= link_to "delete", micropost, method: :delete,
+	<% if current_user?(todo.user) %>
+		<%= link_to "delete", user_todo_path([@todo, current_user]), method: :delete,
 																		 data: { confirm: "You sure?" },
 																		 title: todo.entry %>
 	<% end %>

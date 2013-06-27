@@ -2,10 +2,14 @@ TodoApp::Application.routes.draw do
   get "home/index"
 
   resources :users do
-  resources :todos
+    member do
+      get :following, :followers
+    end
+    resources :todos
   end
 
   resources :sessions, only: [:new, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
