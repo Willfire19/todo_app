@@ -5,9 +5,8 @@ class TodosController < ApplicationController
   # GET /todos
   # GET /todos.json
   def index
-    #@user = User.find(params[:user_id])
     @user = User.find_by_id(params[:user_id])
-    @todo = @user.todos
+    @todos = @user.todos.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -50,7 +49,6 @@ class TodosController < ApplicationController
   # POST /todos.json
   def create
     @todo = current_user.todos.build(params[:todo])
-    #@todo.user = User.find_by_id(params[:user_id])
     @todo.user = current_user
     @user = @todo.user
     respond_to do |format|
