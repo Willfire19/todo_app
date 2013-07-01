@@ -11,11 +11,15 @@ describe "Todos" do
   it { should respond_to(:entry) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
+  it { should respond_to(:assignedDate) }
+  it { should respond_to(:dueDate) }
+  it { should respond_to(:status) }
+  it { should respond_to(:difficulty) }
   its(:user) { should == user }
 
   it { should be_valid }
 
-  describe "accessible attrrbutes" do
+  describe "accessible attributes" do
     it "should not allow access to user_id" do
       expect do
         Todo.new(user_id: user.id)

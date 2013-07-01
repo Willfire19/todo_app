@@ -6,8 +6,6 @@ describe "Static pages"  do
 
 	describe "Home page" do
 
-
-
 		describe "for signed-in users" do
 			let(:user) { FactoryGirl.create(:user) }
 			before do
@@ -34,5 +32,32 @@ describe "Static pages"  do
 				it { should have_link("1 followers", href: followers_user_path(user)) }
 			end
 		end
+	end
+
+	describe "Contact Page" do
+
+		before { visit contact_path }
+
+		it { should have_selector('h1', text: 'Contact') }
+		it { should have_selector('title', text: 'Contact') }
+
+	end
+
+	describe "About Page" do
+
+		before { visit about_path }
+
+		it { should have_selector('h1', text: 'About') }
+		it { should have_selector('title', text: 'About') }
+
+	end
+
+	describe "Version Page" do
+
+		before { visit version_path }
+
+		it { should have_selector('h1', text: 'Version') }
+		it { should have_selector('title', text: 'Version') }
+
 	end	
 end

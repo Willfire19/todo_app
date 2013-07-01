@@ -1,4 +1,10 @@
 TodoApp::Application.routes.draw do
+  get "static_pages/contact"
+
+  get "static_pages/about"
+
+  get "static_pages/version_updates"
+
   get "home/index"
 
   resources :users do
@@ -14,8 +20,13 @@ TodoApp::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
-  
+  match '/contact', to: 'static_pages#contact'
+  match '/about', to: 'static_pages#about'
+  match '/version', to: 'static_pages#version_updates'
+  match '/home', to: 'home#index'
+
   root :to => 'home#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
