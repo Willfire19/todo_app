@@ -83,7 +83,7 @@ class TodosController < ApplicationController
   # DELETE /todos/1
   # DELETE /todos/1.json
   def destroy
-    binding.pry
+
     @user = current_user
     @todo.user = @user
     @todo.destroy
