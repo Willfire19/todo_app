@@ -6,6 +6,8 @@
     <th>Due Date</th>
     <th>Assigned Date</th>
     <th>Priority</th>
+    <th>Difficulty</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +19,8 @@
     <td><%= todo.dueDate %></td>
     <td><%= todo.assignedDate %></td>
     <td><%= todo.priority %></td>
+    <td><%= todo.difficulty %></td>
+    <td><%= todo.status %></td>
     <td><%= link_to 'Show', user_todo_path(@user, todo) %></td>
     <td><%= link_to 'Edit', edit_user_todo_path(@user, todo) %></td>
     <td><%= link_to 'Destroy', user_todo_path(@user, todo), method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -4,7 +4,9 @@ require 'spec_helper'
 describe "Todos" do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @todo = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013) }
+  before { @todo = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
+                                    dueDate: 01-02-2013, difficulty: 1, priority: 1
+                                    ) }
 
   subject { @todo }
 
@@ -15,7 +17,9 @@ describe "Todos" do
   it { should respond_to(:dueDate) }
   it { should respond_to(:status) }
   it { should respond_to(:difficulty) }
+  it { should respond_to(:priority) }
   its(:user) { should == user }
+  its(:status) { should == "To Do" }
 
   it { should be_valid }
 
@@ -40,5 +44,69 @@ describe "Todos" do
   describe "with content that is too long" do
     before { @todo.entry = "a" * 141 }
     it { should_not be_valid }
+  end
+
+  describe "priority" do
+
+    describe "should not be over 11" do
+      before { @todo.priority = 12 }
+      it { should_not be_valid }
+    end
+
+    describe "should not be less then 1" do
+      before { @todo.priority = 0 }
+      it { should_not be_valid }
+    end
+  end
+
+  describe "difficulty" do
+
+    describe "should not be less than 1" do
+      before { @todo.difficulty = 0 }
+      it { should_not be_valid }
+    end
+
+    describe "should not be greater than 100" do
+      before { @todo.difficulty = 101 }
+      it { should_not be_valid }
+    end
+  end
+
+  describe "status" do 
+    describe "should be To Do as default" do
+      before { @todo.save }
+      its(:status) { should == "To Do" }
+    end
+
+    describe "should not be empty" do
+      before { @todo.status = " " }
+      it { should_not be_valid }
+    end
+
+    describe "should not be 'In Progress'" do
+      before do
+        @todo1 = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
+                                 dueDate: 01-02-2013, difficulty: 1, priority: 1,
+                                 status: "In Progress")
+        @todo1.save
+      end
+
+      subject { @todo1 }
+
+      its(:status) { should == "To Do" }
+    end
+
+    describe "should not be 'Complete!' on create" do
+      before do
+        @todo2 = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
+                                 dueDate: 01-02-2013, difficulty: 1, priority: 1,
+                                 status: "Complete!")
+        @todo2.save
+      end
+
+      subject { @todo2 }
+
+      its(:status) { should == "To Do" }
+    end
   end
 end

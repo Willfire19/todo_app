@@ -51,9 +51,10 @@ class TodosController < ApplicationController
     @todo = current_user.todos.build(params[:todo])
     @todo.user = current_user
     @user = @todo.user
+    @todo.status = "To Do"
     respond_to do |format|
       if @todo.save
-        #format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created.' }
+        
         format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created!' }
         format.json { render json: @user, status: :created, location: @user }
       else
@@ -68,6 +69,8 @@ class TodosController < ApplicationController
   # PUT /todos/1.json
   def update
     @todo = Todo.find(params[:id])
+    @todo.user = current_user
+    @user = @todo.user
 
     respond_to do |format|
       if @todo.update_attributes(params[:todo])

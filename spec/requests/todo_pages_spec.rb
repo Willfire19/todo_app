@@ -24,7 +24,18 @@ describe "Todo pages" do
 
   	describe "with valid information" do
 
-  		before{ fill_in 'Entry', with: "Lorem ipsum" }
+  		before do
+        fill_in 'Entry', with: "Lorem ipsum"
+        select "2013", :from => "todo_assignedDate_1i"
+        select "January", :from => "todo_assignedDate_2i"
+        select "1", :from => "todo_assignedDate_3i"
+        select "2013", :from => "todo_dueDate_1i"
+        select "January", :from => "todo_dueDate_2i"
+        select "1", :from => "todo_dueDate_3i"
+        fill_in 'Difficulty', with: 1
+        fill_in 'Priority', with: 1
+      end
+
   		it "should create a todo" do
   			expect { click_button 'Submit' }.to change(Todo, :count).by(1)
   		end

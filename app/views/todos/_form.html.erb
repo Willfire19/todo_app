@@ -6,18 +6,29 @@
     <%= f.text_field :entry %>
   </div>
   <div class="field">
-    <%= f.label :dueDate %><br />
+    <%= f.label :dueDate, 'DueDate' %><br />
     <%= f.date_select :dueDate %>
   </div>
   <div class="field">
-    <%= f.label :assignedDate %><br />
+    <%= f.label :assignedDate, 'AssignedDate' %><br/>
     <%= f.date_select :assignedDate %>
   </div>
   <div class="field">
-    <%= f.label :priority %><br />
-    <%= f.number_field :priority %>
+    <%= f.label :difficulty, 'Difficulty' %><br />
+    <%= f.number_field :difficulty, in: 1..100 %>
   </div>
-  <div class="actions">
+  <div class="field">
+    <%= f.label :priority, 'Priority' %><br />
+    <%= f.number_field :priority, in: 1..11 %>
+  </div>
+  <% if params[:action] == "edit" %>
+    <div class="field">
+      <%= f.label :status, 'Status' %><br/>
+      <%= f.select :status, options_for_select([["To Do", "To Do"], ["In Progress", "In Progress"], ["Complete!", "Complete!"]]) %>
+    </div>
+  <% end %>
+
+    <div class="actions">
     <%= f.submit 'Submit', class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

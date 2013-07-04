@@ -3,6 +3,9 @@
 	<span class="timestamp">
 		Posted <%= time_ago_in_words(todo.created_at) %> ago.
 	</span>
+	<span class="dueDate">Due Date: <%= todo.dueDate %></span>
+	<span class="priority">Priority: <%= todo.priority %></span>
+	<span class="difficulty">Difficulty: <%= todo.difficulty %></span>
 	<% if current_user?(todo.user) %>
 		<%= link_to "delete", user_todo_path(current_user, todo), method: :delete,
 																		 data: { confirm: "You sure?" },
