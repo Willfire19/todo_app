@@ -20,6 +20,7 @@ describe "Todo pages" do
   			before { click_button 'Submit' }
   			it { should have_content('error') }
   		end
+
   	end
 
   	describe "with valid information" do
@@ -42,6 +43,51 @@ describe "Todo pages" do
   	end
   end
 
+  describe "todo edit" do
+    let(:todo1) { FactoryGirl.create(:todo, user: user) }
+    
+    before { visit edit_user_todo_path( user, todo1 ) }
+
+    describe "with valid information" do
+
+      before do
+        fill_in 'Entry', with: "Lorem ipsum"
+        select "2013", :from => "todo_assignedDate_1i"
+        select "January", :from => "todo_assignedDate_2i"
+        select "1", :from => "todo_assignedDate_3i"
+        select "2013", :from => "todo_dueDate_1i"
+        select "January", :from => "todo_dueDate_2i"
+        select "1", :from => "todo_dueDate_3i"
+        fill_in 'Difficulty', with: 1
+        fill_in 'Priority', with: 1
+        select "In Progress", :from => "todo_status"
+        click_button "Submit"
+      end
+
+      it { should have_selector('div.alert.alert-success') }
+    end
+
+    describe "with invalid information" do
+
+      before do
+        fill_in 'Entry', with: ""
+        select "2013", :from => "todo_assignedDate_1i"
+        select "January", :from => "todo_assignedDate_2i"
+        select "1", :from => "todo_assignedDate_3i"
+        select "2013", :from => "todo_dueDate_1i"
+        select "January", :from => "todo_dueDate_2i"
+        select "1", :from => "todo_dueDate_3i"
+        fill_in 'Difficulty', with: 1
+        fill_in 'Priority', with: 1
+        select "In Progress", :from => "todo_status"
+        click_button "Submit"
+      end
+
+      it { should have_content('error') }
+      it { should have_select('todo_status') }
+    end
+  end
+
   describe "todo destruction" do
     before { FactoryGirl.create(:todo, user: user) }
 
@@ -54,3 +100,4 @@ describe "Todo pages" do
     end
   end
 end
+ 
