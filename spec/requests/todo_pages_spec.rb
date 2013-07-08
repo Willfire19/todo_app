@@ -98,6 +98,23 @@ describe "Todo pages" do
         expect { click_link "delete" }.to change(Todo, :count).by(-1)
       end
     end
+
+    describe "on the todo index page" do
+      before{ visit user_todos_path(user) }
+
+      it "should delete a todo" do
+        expect { click_link "Destroy" }.to change(Todo, :count).by(-1)
+      end
+
+      describe "should redirect back to todo index" do
+        before :js => true do 
+          click_link "Destroy"
+          page.driver.browser.switch_to.alert.accept
+        end
+
+        it { should have_selector('title', text: 'Listing todos') }
+      end
+    end
   end
 end
  
