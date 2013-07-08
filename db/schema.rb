@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701214316) do
+ActiveRecord::Schema.define(:version => 20130708215014) do
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(:version => 20130701214316) do
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "todos", :force => true do |t|
-    t.string   "entry"
+    t.text     "entry",        :limit => 255
     t.date     "dueDate"
     t.date     "assignedDate"
     t.integer  "priority"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.integer  "user_id"
     t.string   "status"
     t.integer  "difficulty"

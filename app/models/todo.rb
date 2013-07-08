@@ -9,7 +9,7 @@ class Todo < ActiveRecord::Base
   validates :assignedDate, :presence => true
   validates :entry, :presence => true,
   					:length => { :minimum => 4 },
-  					:length => { :maximum => 140 }
+  					:length => { :maximum => 256 }
   validates :user_id, :presence => true
   validates :status, :presence => true
   validates :difficulty, :presence => true, :inclusion => 1..100

@@ -42,8 +42,13 @@ describe "Todos" do
   end
 
   describe "with content that is too long" do
-    before { @todo.entry = "a" * 141 }
+    before { @todo.entry = "a" * 257 }
     it { should_not be_valid }
+  end
+
+  describe "with content that is acceptable" do
+    before { @todo.entry = "a" * 256 }
+    it { should be_valid }
   end
 
   describe "priority" do
