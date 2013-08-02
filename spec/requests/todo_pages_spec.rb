@@ -12,6 +12,19 @@ describe "Todo pages" do
 
   	describe "with invalid information" do
 
+      before do
+        fill_in 'Entry', with: ""
+        select "2013", :from => "todo_assignedDate_1i"
+        select "January", :from => "todo_assignedDate_2i"
+        select "1", :from => "todo_assignedDate_3i"
+        select "2013", :from => "todo_dueDate_1i"
+        select "January", :from => "todo_dueDate_2i"
+        select "1", :from => "todo_dueDate_3i"
+        fill_in 'Difficulty', with: 1
+        fill_in 'Priority', with: 1
+        fill_in 'Tag', with: "David Givens"
+      end
+
   		it "should not create a todo" do
   			expect { click_button 'Submit' }.not_to change(Todo, :count)
   		end
@@ -36,6 +49,7 @@ describe "Todo pages" do
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
         fill_in 'Tag', with: "David Givens"
+        select "In Progress", :from => "todo_status"
       end
 
   		it "should create a todo" do

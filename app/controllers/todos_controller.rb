@@ -51,7 +51,6 @@ class TodosController < ApplicationController
     @todo = current_user.todos.build(params[:todo])
     @todo.user = current_user
     @user = @todo.user
-    @todo.status = "To Do"
     respond_to do |format|
       if @todo.save
         

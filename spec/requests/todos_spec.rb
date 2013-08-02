@@ -97,7 +97,7 @@ describe "Todos" do
       it { should_not be_valid }
     end
 
-    describe "should not be 'In Progress'" do
+    describe "can be 'In Progress' on create" do
       before do
         @todo1 = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
                                  dueDate: 01-02-2013, difficulty: 1, priority: 1,
@@ -107,7 +107,7 @@ describe "Todos" do
 
       subject { @todo1 }
 
-      its(:status) { should == "To Do" }
+      its(:status) { should == "In Progress" }
     end
 
     describe "should not be 'Complete!' on create" do

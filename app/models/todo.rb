@@ -28,6 +28,10 @@ class Todo < ActiveRecord::Base
   private
 
   def assign_defaults_on_new_Todo
-    self.status = "To Do"
+    if self.status == "Complete!"
+      self.status = "To Do"
+    else
+      self.status ||= "To Do"
+    end
   end
 end

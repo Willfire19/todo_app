@@ -30,6 +30,11 @@
       <%= f.label :status, 'Status' %><br/>
       <%= f.select :status, options_for_select([["To Do", "To Do"], ["In Progress", "In Progress"], ["Complete!", "Complete!"]]) %>
     </div>
+  <% else %>
+    <div class="field">
+      <%= f.label :status, 'Status' %><br/>
+      <%= f.select :status, options_for_select([["To Do", "To Do"], ["In Progress", "In Progress"]]) %>
+    </div>
   <% end %>
 
     <div class="actions">
