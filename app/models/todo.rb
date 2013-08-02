@@ -2,7 +2,7 @@ class Todo < ActiveRecord::Base
   after_initialize :assign_defaults_on_new_Todo, if: 'new_record?'
 
   attr_accessible :assignedDate, :dueDate, :entry, :priority, 
-                  :status, :difficulty
+                  :status, :difficulty, :tag
 
   belongs_to :user
 

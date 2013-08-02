@@ -5,7 +5,7 @@ describe "Todos" do
 
   let(:user) { FactoryGirl.create(:user) }
   before { @todo = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
-                                    dueDate: 01-02-2013, difficulty: 1, priority: 1
+                                    dueDate: 01-02-2013, difficulty: 1, priority: 1, tag: "test"
                                     ) }
 
   subject { @todo }
@@ -18,6 +18,7 @@ describe "Todos" do
   it { should respond_to(:status) }
   it { should respond_to(:difficulty) }
   it { should respond_to(:priority) }
+  it { should respond_to(:tag) }
   its(:user) { should == user }
   its(:status) { should == "To Do" }
 
@@ -49,6 +50,14 @@ describe "Todos" do
   describe "with content that is acceptable" do
     before { @todo.entry = "a" * 256 }
     it { should be_valid }
+  end
+
+  describe "tag" do
+
+    describe "can be empty on creation" do
+      before { @todo.tag = "" }
+      it { should be_valid }
+    end
   end
 
   describe "priority" do

@@ -26,7 +26,7 @@ describe "Todo pages" do
   	describe "with valid information" do
 
   		before do
-        fill_in 'Entry', with: "Lorem ipsum"
+        fill_in 'Entry', with: "Michael Bolt"
         select "2013", :from => "todo_assignedDate_1i"
         select "January", :from => "todo_assignedDate_2i"
         select "1", :from => "todo_assignedDate_3i"
@@ -35,6 +35,7 @@ describe "Todo pages" do
         select "1", :from => "todo_dueDate_3i"
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
+        fill_in 'Tag', with: "David Givens"
       end
 
   		it "should create a todo" do
@@ -51,7 +52,7 @@ describe "Todo pages" do
     describe "with valid information" do
 
       before do
-        fill_in 'Entry', with: "Lorem ipsum"
+        fill_in 'Entry', with: "Jamar Sweeley"
         select "2013", :from => "todo_assignedDate_1i"
         select "January", :from => "todo_assignedDate_2i"
         select "1", :from => "todo_assignedDate_3i"
@@ -61,6 +62,7 @@ describe "Todo pages" do
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
+        fill_in 'Tag', with: "Devin Cobb"
         click_button "Submit"
       end
 
@@ -80,6 +82,7 @@ describe "Todo pages" do
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
+        fill_in 'Tag', with: "J.R Meyers"
         click_button "Submit"
       end
 

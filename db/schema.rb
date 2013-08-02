@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708215014) do
+ActiveRecord::Schema.define(:version => 20130802154948) do
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130708215014) do
     t.integer  "user_id"
     t.string   "status"
     t.integer  "difficulty"
+    t.string   "tag"
   end
 
   create_table "users", :force => true do |t|

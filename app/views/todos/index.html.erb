@@ -4,6 +4,7 @@
 <table>
   <tr>
     <th>Entry</th>
+    <th>Tag</th>
     <th>Due Date</th>
     <th>Assigned Date</th>
     <th>Priority</th>
@@ -17,6 +18,7 @@
 <% @todos.each do |todo| %>
   <tr>
     <td><%= todo.entry %></td>
+    <td><%= todo.tag %></td>
     <td><%= todo.dueDate %></td>
     <td><%= todo.assignedDate %></td>
     <td><%= todo.priority %></td>
