@@ -1,7 +1,7 @@
 <tr>
 	<td><span class="todo-txt"><%= todo.entry %></span></td>
 	<td><span class="todo-txt"><%= todo.tag %></span></td>
-	<td><span class="numbers"><%= todo.dueDate %></span></span></td>
+	<td><span class="numbers"><%= l todo.dueDate, format: :duedate %></span></span></td>
 	<td><span class="numbers"><%= todo.difficulty %></span></span></td>
 	<td><span class="numbers"><%= todo.priority %></span></span></td>
 	<td><span class="status-text"><%= todo.status %></span></span></td>
