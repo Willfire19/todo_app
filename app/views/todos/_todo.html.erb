@@ -1,14 +1,15 @@
-<li>
-	<span class="content"><%= todo.entry %></span>
-	<span class="timestamp">
-		Posted <%= time_ago_in_words(todo.created_at) %> ago.
-	</span>
-	<span class="dueDate">Due Date: <%= todo.dueDate %></span>
-	<span class="priority">Priority: <%= todo.priority %></span>
-	<span class="difficulty">Difficulty: <%= todo.difficulty %></span>
-	<% if current_user?(todo.user) %>
+<tr>
+	<td><span class="todo-txt"><%= todo.entry %></span></td>
+	<td><span class="todo-txt"><%= todo.tag %></span></td>
+	<td><span class="numbers"><%= todo.dueDate %></span></span></td>
+	<td><span class="numbers"><%= todo.difficulty %></span></span></td>
+	<td><span class="numbers"><%= todo.priority %></span></span></td>
+	<td><span class="status-text"><%= todo.status %></span></span></td>
+	<td><%= link_to 'Show', user_todo_path(@user, todo) %></td>
+  <td><%= link_to 'Edit', edit_user_todo_path(@user, todo) %></td>
+	<td><% if current_user?(todo.user) %>
 		<%= link_to "delete", user_todo_path(current_user, todo), method: :delete,
 																		 data: { confirm: "You sure?" },
-																		 title: todo.entry %>
+																		 title: todo.entry %></td>
 	<% end %>
-</li>
+</tr>

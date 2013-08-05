@@ -21,17 +21,29 @@
   <b>Email:</b>
   <%= @user.email %>
 </p>
-
-<div class="span8">
+<div class="container">
 	<% if @user.todos.any? %>
-	<b>Todos (<%= @user.todos.count %>)</b>
-	<ol class="todos">
+	<b>Todos (<%= @user.todos.count %>)<%= link_to ' Add a New Todo!', new_user_todo_path(@user) %></b>
+	<table class="table table-hover">
+		<tr>
+    <th>Entry</th>
+    <th>Tag</th>
+    <th><span class="todo-calc">Due Date</th>
+    <th><span class="todo-calc">Difficulty</th>
+    <th><span class="todo-calc">Priority</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 		<%= render @todos %>
-	</ol>
+	</table>
 	<%= will_paginate @todos %>
 	<% end %>
 </div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<!--
 <%= link_to 'Go to Your Todos!', user_todos_path(@user) %>
+-->
