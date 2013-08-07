@@ -14,6 +14,7 @@ FactoryGirl.define  do
 		entry "Lorem ipsum"
 		user
 		assignedDate 01-01-2013
+		dueDate 01-02-2013
 		status "To Do"
 		difficulty 1
 		priority 1 
