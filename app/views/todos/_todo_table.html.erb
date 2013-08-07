@@ -1,0 +1,41 @@
+<% if @user == current_user %>
+  <b>Todos (<%= @user.todos.count %>)<%= link_to ' Add a New Todo!', new_user_todo_path(@user) %></b>
+<% else %>
+  <b>Todos (<%= @user.todos.count %>)</b>
+<% end %>
+
+<% if @user.todos.any? %>
+  <table class="table table-hover">
+    <tr>
+      <th>Entry</th>
+      <th>Tag</th>
+      <th><span class="todo-calc">Due Date</th>
+      <th><span class="todo-calc">Difficulty</th>
+      <th><span class="todo-calc">Priority</th>
+      <th>Status</th>
+      <% if current_user?(@user) %>
+      <th></th>
+      <th></th>
+      <th></th>
+      <% end %>
+    </tr>
+
+  <% @todos.each do |todo| %>
+    <tr>
+      <td><span class="todo-txt"><%= todo.entry %></span></td>
+      <td><span class="todo-txt"><%= todo.tag %></span></td>
+      <td><span class="numbers"><%= l todo.dueDate, format: :duedate %></span></span></td>
+      <td><span class="numbers"><%= todo.difficulty %></span></span></td>
+      <td><span class="numbers"><%= todo.priority %></span></span></td>
+      <td><span class="status-text"><%= todo.status %></span></span></td>
+      <% if current_user?(todo.user) %>
+      <td><%= link_to 'Show', user_todo_path(current_user, todo) %></td>
+      <td><%= link_to 'Edit', edit_user_todo_path(current_user, todo) %></td>
+      <td><%= link_to "Delete", user_todo_path(current_user, todo), method: :delete,
+                                                                           data: { confirm: "You sure?" },
+                                                                           title: todo.entry %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table> 
+<% end %>
