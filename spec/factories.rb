@@ -13,8 +13,8 @@ FactoryGirl.define  do
 	factory :todo do
 		entry "Lorem ipsum"
 		user
-		assignedDate 01-01-2013
-		dueDate 01-02-2013
+		assignedDate DateTime.new(2013, 1, 1)
+		dueDate DateTime.new(2013, 1, 1)
 		status "To Do"
 		difficulty 1
 		priority 1 

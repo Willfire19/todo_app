@@ -1,0 +1,59 @@
+/* _todo.html.erb */
+
+@media all and (max-width: 850px) {
+	.todo-tag {
+		display: none;
+	}
+}
+
+@media all and (max-width: 760px) {
+	.numbers {
+		display: none;
+	}
+}
+
+table {
+	width: 100%;
+	height: auto;
+}
+
+th, td {
+	padding: 10px 10px 10px 10px;
+	border-right: 4px solid #FFFFFF;
+	text-align: center;
+}
+
+.todo-entry{
+	width: 50%;
+}
+
+th {
+	border-bottom: 2px solid #111111;
+}
+
+td.todo-tag {
+	font-size: 200%;
+}
+
+td.todo-entry {
+	font-size: 200%;
+	text-align: left;
+} 
+ 
+.todo-calc {} 
+
+td.numbers {
+	font-size: 300%;
+} 
+
+.todo-status{
+	width: 20%;
+}
+
+td.todo-status {
+	font-size: 200%;
+} 
+
+.todo-link {
+	width: 10%;
+}

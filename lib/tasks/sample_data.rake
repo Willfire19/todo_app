@@ -30,11 +30,12 @@ def make_todos
 	users = User.all(limit: 6)
 	50.times do
 		entry = Faker::Lorem.sentence(5)
-		assignedDate = 01-01-2013
+		assignedDate = DateTime.new(2013, 1, 1)
+		dueDate = DateTime.new(2013, 1, 1)
 		difficulty = 1
 		priority = 1
 		users.each { |user| user.todos.create!(entry: entry, assignedDate: assignedDate,
-								 difficulty: difficulty, priority: priority ) }
+								 dueDate: dueDate, difficulty: difficulty, priority: priority ) }
 	end	
 end
 
