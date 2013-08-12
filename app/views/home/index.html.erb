@@ -1,6 +1,6 @@
 
 <% if signed_in? %>
-	<div class="row">
+	<div class="row-fluid">
 		<aside class="span8">
 			<section>
 				<%= render 'shared/user_info' %>
@@ -8,9 +8,10 @@
 			<section>
 				<%= render 'shared/stats' %>
 			</section>
-			<section>
+			<section class="todo_table">
 				<%= render 'todos/todo_table' %>
 			</section>
+
 		</aside>
 		<div class="span4">
 			<h3>Todo Feed</h3>

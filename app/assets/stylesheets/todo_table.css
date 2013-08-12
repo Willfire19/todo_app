@@ -1,5 +1,5 @@
 /* _todo.html.erb */
-
+/*
 @media all and (max-width: 850px) {
 	.todo-tag {
 		display: none;
@@ -10,6 +10,20 @@
 	.numbers {
 		display: none;
 	}
+}
+
+section.todo_table[max-width~="600px"] > .todo-tag,
+section.todo_table[max-width~="600px"] > .numbers {
+	display: none;
+}
+*/
+
+.todo-table[max-width~="850px"] .todo-tag {
+	display: none;
+}
+
+.todo-table[max-width~="760px"] .numbers {
+	display: none;
 }
 
 table {
