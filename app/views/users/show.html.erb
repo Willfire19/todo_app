@@ -31,9 +31,12 @@
     <%= link_to 'Edit', edit_user_path(@user) %> |
     <%= link_to 'Back', users_path %>
   </section>
+  <section>
+    <%= render "todos/todo_table" %>
+  </section>
 </div>
 </div>
-<%= render "todos/todo_table" %>
+
 
 
 
