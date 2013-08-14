@@ -19,11 +19,5 @@
 		</div>
 	</div>
 <% else %>
-	<div class="center hero-unit">
-		<h1>Welcome to the To Do app!</h1>
-		
-		<p>This app allows people to create a to do list for themselves on the web browser! HELLLZZZ YEEAAAHHH!!!</p>
-		
-		<%= link_to "Sign Up Here!", signup_path, class: "btn btn-large btn-primary" %>
-		<%= link_to "Find your Friends (and other Users) Here!", users_path, class: "btn btn-large btn-primary" %>
+	<%= render 'intro_home' %>
 <% end %>
