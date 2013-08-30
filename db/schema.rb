@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130802154948) do
+ActiveRecord::Schema.define(:version => 20130830044427) do
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
@@ -29,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20130802154948) do
     t.date     "dueDate"
     t.date     "assignedDate"
     t.integer  "priority"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.integer  "user_id"
-    t.string   "status"
+    t.string   "status",                      :default => "To Do"
     t.integer  "difficulty"
     t.string   "tag"
   end

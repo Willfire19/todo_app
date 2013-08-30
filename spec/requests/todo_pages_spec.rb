@@ -23,6 +23,7 @@ describe "Todo pages" do
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
         fill_in 'Tag', with: "David Givens"
+        select "Misc", :from => "todo_list"
       end
 
   		it "should not create a todo" do
@@ -50,6 +51,7 @@ describe "Todo pages" do
         fill_in 'Priority', with: 1
         fill_in 'Tag', with: "David Givens"
         select "In Progress", :from => "todo_status"
+        select "Misc", :from => "todo_list"
       end
 
   		it "should create a todo" do
@@ -77,6 +79,7 @@ describe "Todo pages" do
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
         fill_in 'Tag', with: "Devin Cobb"
+        select "Misc", :from => "todo_list"
         click_button "Submit"
       end
 
@@ -97,6 +100,7 @@ describe "Todo pages" do
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
         fill_in 'Tag', with: "J.R Meyers"
+        select "Misc", :from => "todo_list"
         click_button "Submit"
       end
 

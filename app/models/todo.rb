@@ -4,16 +4,18 @@ class Todo < ActiveRecord::Base
   attr_accessible :assignedDate, :dueDate, :entry, :priority, 
                   :status, :difficulty, :tag
 
-  belongs_to :user
+  # belongs_to :user
+  belongs_to :list
 
   validates :assignedDate, :presence => true
   validates :entry, :presence => true,
   					:length => { :minimum => 4 },
   					:length => { :maximum => 256 }
-  validates :user_id, :presence => true
+  # validates :user_id, :presence => true
   validates :status, :presence => true
   validates :difficulty, :presence => true, :inclusion => 1..100
   validates :priority, :inclusion => 1..11
+  validates :list_id, :presence => true
 
   default_scope order: 'todos.created_at DESC'
 

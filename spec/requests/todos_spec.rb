@@ -11,7 +11,8 @@ describe "Todos" do
   subject { @todo }
 
   it { should respond_to(:entry) }
-  it { should respond_to(:user_id) }
+  # it { should respond_to(:user_id) }
+  it { should respond_to(:list_id) }
   it { should respond_to(:user) }
   it { should respond_to(:assignedDate) }
   it { should respond_to(:dueDate) }
@@ -48,8 +49,16 @@ describe "Todos" do
   end
 
   describe "with content that is acceptable" do
-    before { @todo.entry = "a" * 256 }
+    before { @todo.entry = "a" * 255 }
     it { should be_valid }
+  end
+
+  describe "list" do
+
+    describe "id is not present" do
+      before { @todo.list_id = nil }
+      it { should_not be_valid }
+    end
   end
 
   describe "tag" do

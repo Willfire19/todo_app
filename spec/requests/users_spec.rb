@@ -25,6 +25,7 @@ describe "Users" do
 	it { should respond_to(:followers) }
 	it { should respond_to(:following?) }
 	it { should respond_to(:follow!) }
+	it { should respond_to(:lists) }
 
 	it { should be_valid }
 	it { should_not be_admin }

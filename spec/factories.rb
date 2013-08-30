@@ -10,9 +10,14 @@ FactoryGirl.define  do
 		end
 	end
 
+	factory :list do
+		name "All"
+		user
+	end
+
 	factory :todo do
 		entry "Lorem ipsum"
-		user
+		list
 		assignedDate DateTime.new(2013, 1, 1)
 		dueDate DateTime.new(2013, 1, 1)
 		status "To Do"
