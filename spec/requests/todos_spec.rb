@@ -4,8 +4,10 @@ require 'spec_helper'
 describe "Todos" do
 
   let(:user) { FactoryGirl.create(:user) }
-  before { @todo = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
-                                    dueDate: 01-02-2013, difficulty: 1, priority: 1, tag: "test"
+  let(:list) { FactoryGirl.create(:list, user: user) }
+  before { @todo = list.todos.build(entry: "Lorem ipsum", assignedDate: DateTime.new(2013, 1, 1),
+                                    dueDate: DateTime.new(2013, 2, 1), difficulty: 1, priority: 1,
+                                    tag: "test"
                                     ) }
 
   subject { @todo }
@@ -13,14 +15,14 @@ describe "Todos" do
   it { should respond_to(:entry) }
   # it { should respond_to(:user_id) }
   it { should respond_to(:list_id) }
-  it { should respond_to(:user) }
+  #it { should respond_to(:user) }
   it { should respond_to(:assignedDate) }
   it { should respond_to(:dueDate) }
   it { should respond_to(:status) }
   it { should respond_to(:difficulty) }
   it { should respond_to(:priority) }
   it { should respond_to(:tag) }
-  its(:user) { should == user }
+  #its(:user) { should == user }
   its(:status) { should == "To Do" }
 
   it { should be_valid }
@@ -33,8 +35,13 @@ describe "Todos" do
   	end
   end
 
-  describe "when user_id is not present" do
-    before { @todo.user_id = nil }
+  # describe "when user_id is not present" do
+  #   before { @todo.user_id = nil }
+  #   it { should be_valid }
+  # end
+
+  describe "when list_id is not present" do
+    before { @todo.list_id = nil }
     it { should_not be_valid }
   end
 
