@@ -3,6 +3,10 @@ class List < ActiveRecord::Base
 
   belongs_to :user
   has_many :todos, :dependent => :destroy
+  validates :user_id, :presence => true
+  validates :name, :presence => true,
+  					:length => { :minimum => 4 },
+  					:length => { :maximum => 25 }
 
   # Returns lists from the users being followed by the given user.
   def self.from_users_followed_by(user)
