@@ -1,7 +1,8 @@
 
 <% if signed_in? %>
 	<div class="row-fluid">
-		<aside class="span8">
+		<!-- <div class="span8"> -->
+		<aside class="span12">
 			<section>
 				<%= render 'shared/user_info' %>
 			</section>
@@ -13,10 +14,10 @@
 			</section>
 
 		</aside>
-		<div class="span4">
+		<!-- <div class="span4">
 			<h3>Todo Feed</h3>
 			<%= render 'shared/feed' %>
-		</div>
+		</div> -->
 	</div>
 <% else %>
 	<%= render 'intro_home' %>

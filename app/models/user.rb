@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_many :lists, :dependent => :destroy
-  has_many :todos, through: :lists, :dependent => :destroy
+  has_many :todos, through: :lists #, :dependent => :destroy
   has_many :relationships, foreign_key: "follower_id", :dependent => :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
   			uniqueness: { case_sensitive: false }
 
   def feed
-    Todo.from_users_followed_by(self)
+    #Todo.from_users_followed_by(self)
+    List.from_users_followed_by(self)
   end
 
   def following?(other_user)

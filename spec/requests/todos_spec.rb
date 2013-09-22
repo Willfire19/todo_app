@@ -40,11 +40,6 @@ describe "Todos" do
   #   it { should be_valid }
   # end
 
-  describe "when list_id is not present" do
-    before { @todo.list_id = nil }
-    it { should_not be_valid }
-  end
-
   describe "with blank content" do
     before { @todo.entry = " " }
     it {should_not be_valid }
