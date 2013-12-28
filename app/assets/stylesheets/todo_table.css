@@ -49,6 +49,10 @@ td.todo-tag {
 	font-size: 200%;
 }
 
+td.todo-list {
+	font-size: 200%;
+}
+
 td.todo-entry {
 	font-size: 200%;
 	text-align: left;

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  after_create :create_new_List
+
   attr_accessible :email, :username, :password, :password_confirmation
   has_secure_password
 
@@ -6,7 +8,8 @@ class User < ActiveRecord::Base
   before_save :create_remember_token
 
   has_many :lists, :dependent => :destroy
-  has_many :todos, through: :lists #, :dependent => :destroy
+  # has_many :todos, through: :lists #, :dependent => :destroy
+  has_many :todos, :dependent => :destroy
   has_many :relationships, foreign_key: "follower_id", :dependent => :destroy
   has_many :followed_users, through: :relationships, source: :followed
   has_many :reverse_relationships, foreign_key: "followed_id",
@@ -43,5 +46,10 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def create_new_List
+      @list = self.lists.build( name: "Uncategorized" )
+      @list.save
     end
 end

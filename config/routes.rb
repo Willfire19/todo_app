@@ -12,6 +12,7 @@ TodoApp::Application.routes.draw do
       get :following, :followers
     end
     resources :todos
+    resources :lists, only: [:new, :create, :edit, :update, :destroy]
   end
 
   resources :sessions, only: [:new, :create, :destroy]

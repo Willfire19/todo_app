@@ -5,7 +5,7 @@ describe "Todos" do
 
   let(:user) { FactoryGirl.create(:user) }
   let(:list) { FactoryGirl.create(:list, user: user) }
-  before { @todo = list.todos.build(entry: "Lorem ipsum", assignedDate: DateTime.new(2013, 1, 1),
+  before { @todo = user.todos.build(entry: "Lorem ipsum", assignedDate: DateTime.new(2013, 1, 1),
                                     dueDate: DateTime.new(2013, 2, 1), difficulty: 1, priority: 1,
                                     tag: "test"
                                     ) }
@@ -13,16 +13,16 @@ describe "Todos" do
   subject { @todo }
 
   it { should respond_to(:entry) }
-  # it { should respond_to(:user_id) }
+  it { should respond_to(:user_id) }
   it { should respond_to(:list_id) }
-  #it { should respond_to(:user) }
+  it { should respond_to(:user) }
   it { should respond_to(:assignedDate) }
   it { should respond_to(:dueDate) }
   it { should respond_to(:status) }
   it { should respond_to(:difficulty) }
   it { should respond_to(:priority) }
   it { should respond_to(:tag) }
-  #its(:user) { should == user }
+  its(:user) { should == user }
   its(:status) { should == "To Do" }
 
   it { should be_valid }
@@ -59,8 +59,22 @@ describe "Todos" do
 
     describe "id is not present" do
       before { @todo.list_id = nil }
-      it { should_not be_valid }
+      it { should be_valid }
     end
+
+    describe "id is present" do
+      before { @todo.list_id = list }
+      it { should be_valid }
+    end
+
+    describe "id is present" do
+      before { @todo2 = user.todos.build(entry: "Lorem ipsum", assignedDate: DateTime.new(2013, 1, 1),
+                                    dueDate: DateTime.new(2013, 2, 1), difficulty: 1, priority: 1,
+                                    tag: "test", list_id: list
+                                    ) }
+      it { should be_valid }
+    end
+    
   end
 
   describe "tag" do

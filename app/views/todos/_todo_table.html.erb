@@ -1,8 +1,10 @@
 <div class="todo-table">
   <% if @user == current_user %>
     <b>Todos (<%= @user.todos.count %>)<%= link_to ' Add a New Todo!', new_user_todo_path(@user) %></b>
+    <b>Lists (<%= @user.lists.count %>)<%= link_to ' Add a New List!', new_user_list_path(@user) %></b>
   <% else %>
     <b>Todos (<%= @user.todos.count %>)</b>
+    <b>Lists (<%= @user.lists.count %>)</b>
   <% end %>
 
   <% if @user.todos.any? %>
@@ -10,6 +12,7 @@
       <thead>
         <tr>
           <th class="todo-entry">Entry</th>
+          <th class="todo-list">List</th>
           <th class="todo-tag">Tag</th>
           <th class="numbers">Due Date</th>
           <th class="numbers">Difficulty</th>
@@ -24,6 +27,7 @@
     <% @todos.each do |todo| %>
       <tr>
         <td class="todo-entry"><%= todo.entry %></span></td>
+        <td class="todo-list"><%= todo.list.name || none %></span></td>
         <td class="todo-tag"><%= todo.tag %></span></td>
         <td class="numbers"><%= l todo.dueDate, format: :duedate %></span></span></td>
         <td class="numbers"><%= todo.difficulty %></span></span></td>

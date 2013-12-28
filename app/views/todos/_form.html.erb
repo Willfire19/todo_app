@@ -25,6 +25,10 @@
     <%= f.label :priority, 'Priority' %><br />
     <%= f.number_field :priority, in: 1..11 %>
   </div>
+  <div class="field">
+    <%= f.label :list_id, 'List' %><br/>
+    <%= f.collection_select(:list_id, @user.lists, :id, :name) %>
+  </div>
   <% if params[:action] == "edit" || params[:action] == "update" %>
     <div class="field">
       <%= f.label :status, 'Status' %><br/>

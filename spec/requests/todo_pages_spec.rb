@@ -5,6 +5,7 @@ describe "Todo pages" do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }
+  let(:list) { FactoryGirl.create(:list, user: user)}
   before { sign_in user }
 
   describe "todo creation" do
@@ -23,7 +24,7 @@ describe "Todo pages" do
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
         fill_in 'Tag', with: "David Givens"
-        select "Misc", :from => "todo_list"
+        select "Uncategorized", :from => "List"
       end
 
   		it "should not create a todo" do
@@ -51,7 +52,7 @@ describe "Todo pages" do
         fill_in 'Priority', with: 1
         fill_in 'Tag', with: "David Givens"
         select "In Progress", :from => "todo_status"
-        select "Misc", :from => "todo_list"
+        select "Uncategorized", :from => "List"
       end
 
   		it "should create a todo" do
@@ -61,7 +62,7 @@ describe "Todo pages" do
   end
 
   describe "todo edit" do
-    let(:todo1) { FactoryGirl.create(:todo, user: user) }
+    let(:todo1) { FactoryGirl.create(:todo, user: user, list: list) }
     
     before { visit edit_user_todo_path( user, todo1 ) }
 
@@ -79,7 +80,7 @@ describe "Todo pages" do
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
         fill_in 'Tag', with: "Devin Cobb"
-        select "Misc", :from => "todo_list"
+        select "Uncategorized", :from => "List"
         click_button "Submit"
       end
 
@@ -100,7 +101,7 @@ describe "Todo pages" do
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
         fill_in 'Tag', with: "J.R Meyers"
-        select "Misc", :from => "todo_list"
+        select "Uncategorized", :from => "List"
         click_button "Submit"
       end
 
@@ -110,13 +111,13 @@ describe "Todo pages" do
   end
 
   describe "todo destruction" do
-    before { FactoryGirl.create(:todo, user: user) }
+    before { FactoryGirl.create(:todo, user: user, list: list) }
 
     describe "as correct user" do
       before { visit root_path }
 
       it "should delete a todo" do
-        expect { click_link "delete" }.to change(Todo, :count).by(-1)
+        expect { click_link "Delete" }.to change(Todo, :count).by(-1)
       end
     end
 

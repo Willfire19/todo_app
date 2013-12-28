@@ -120,7 +120,7 @@ describe "Authentication" do
 				end
 
 				describe "submitting to the destroy action" do
-					before { delete user_todo_path(user, FactoryGirl.create(:todo)) }
+					before { delete user_todo_path(user, FactoryGirl.create(:todo, user: user)) }
 					specify { response.should redirect_to(signin_path) }
 				end
 			end
