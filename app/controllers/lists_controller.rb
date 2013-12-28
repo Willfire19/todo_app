@@ -48,7 +48,7 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
-    @list = current_user.lists.build(params[:todo])
+    @list = current_user.lists.build(params[:list])
     @list.user = current_user
     @user = @list.user
     respond_to do |format|

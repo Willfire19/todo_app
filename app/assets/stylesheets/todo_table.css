@@ -1,7 +1,13 @@
 /* _todo.html.erb */
-/*
-@media all and (max-width: 850px) {
+
+@media all and (max-width: 940px) {
 	.todo-tag {
+		display: none;
+	}
+	.todo-priority{
+		display: none;
+	}
+	.numbers {
 		display: none;
 	}
 }
@@ -12,19 +18,19 @@
 	}
 }
 
-section.todo_table[max-width~="600px"] > .todo-tag,
+/*section.todo_table[max-width~="600px"] > .todo-tag,
 section.todo_table[max-width~="600px"] > .numbers {
 	display: none;
-}
-*/
+}*/
 
-.todo-table[max-width~="850px"] .todo-tag {
+
+/*.todo-table[max-width~="850px"] .todo-tag {
 	display: none;
 }
 
 .todo-table[max-width~="760px"] .numbers {
 	display: none;
-}
+}*/
 
 table {
 	width: 100%;
@@ -37,9 +43,9 @@ th, td {
 	text-align: center;
 }
 
-.todo-entry{
+/*.todo-entry{
 	width: 50%;
-}
+}*/
 
 th {
 	border-bottom: 2px solid #111111;
@@ -59,6 +65,10 @@ td.todo-entry {
 } 
  
 .todo-calc {} 
+
+td.todo-priority{
+	font-size: 200%;
+}
 
 td.numbers {
 	font-size: 300%;
