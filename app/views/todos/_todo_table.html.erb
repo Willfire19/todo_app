@@ -27,7 +27,13 @@
     <% @todos.each do |todo| %>
       <tr>
         <td class="todo-entry"><%= todo.entry %></span></td>
-        <td class="todo-list"><%= todo.list.name || none %></span></td>
+        <td class="todo-list">
+          <% if todo.list != nil %>
+            <%= todo.list.name %>
+          <% else %>
+            None
+          <% end %></span>
+        </td>
         <td class="todo-tag"><%= todo.tag %></span></td>
         <td class="numbers"><%= l todo.dueDate, format: :duedate %></span></span></td>
         <td class="numbers"><%= todo.difficulty %></span></span></td>
