@@ -7,14 +7,14 @@ class Todo < ActiveRecord::Base
   belongs_to :user
   belongs_to :list
 
-  validates :assignedDate, :presence => true
+  # validates :assignedDate, :presence => true
   validates :entry, :presence => true,
   					:length => { :minimum => 4 },
   					:length => { :maximum => 256 }
   validates :user_id, :presence => true
   validates :status, :presence => true
-  validates :difficulty, :presence => true, :inclusion => 1..100
-  validates :priority, :inclusion => 1..11
+  validates :difficulty, :inclusion => 0..100
+  validates :priority, :inclusion => 0..11
   # validates :list_id, :presence => true
 
   default_scope order: 'todos.created_at DESC'
@@ -35,5 +35,18 @@ class Todo < ActiveRecord::Base
     else
       self.status ||= "To Do"
     end
+
+    if self.difficulty == nil
+      self.difficulty = 0
+    else
+      self.difficulty
+    end
+
+    if self.priority == nil
+      self.priority = 0
+    else
+      self.priority
+    end
   end
+
 end

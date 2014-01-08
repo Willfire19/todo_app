@@ -77,6 +77,24 @@ describe "Todos" do
     
   end
 
+  describe "assigned date" do
+
+    describe "can be empty on creation" do
+      before { @todo.assignedDate = nil }
+      it { should be_valid }
+    end
+
+  end
+
+  describe "due date" do
+
+    describe "can be empty on creation" do
+      before { @todo.dueDate = nil }
+      it { should be_valid }
+    end
+
+  end
+
   describe "tag" do
 
     describe "can be empty on creation" do
@@ -92,23 +110,49 @@ describe "Todos" do
       it { should_not be_valid }
     end
 
-    describe "should not be less then 1" do
+    describe "can be less then 1" do
       before { @todo.priority = 0 }
-      it { should_not be_valid }
+      it { should be_valid }
     end
+
+    describe "should be 0 as default" do
+       before do
+        @todo4 = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
+                                 dueDate: 01-02-2013, difficulty: 1, priority: nil,
+                                 status: "To Do")
+        @todo4.save
+      end
+      subject { @todo4 }
+
+      its(:priority) { should == 0 }
+    end
+
   end
 
   describe "difficulty" do
 
-    describe "should not be less than 1" do
+    describe "can be less than 1" do
       before { @todo.difficulty = 0 }
-      it { should_not be_valid }
+      it { should be_valid }
     end
 
     describe "should not be greater than 100" do
       before { @todo.difficulty = 101 }
       it { should_not be_valid }
     end
+
+    describe "should be 0 as default" do
+      before do
+        @todo3 = user.todos.build(entry: "Lorem ipsum", assignedDate: 01-01-2013,
+                                 dueDate: 01-02-2013, difficulty: nil, priority: 1,
+                                 status: "To Do")
+        @todo3.save
+      end
+      subject { @todo3 }
+
+      its(:difficulty) { should == 0 }
+    end
+
   end
 
   describe "status" do 

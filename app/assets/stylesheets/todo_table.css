@@ -37,6 +37,10 @@ table {
 	height: auto;
 }
 
+tr.zebraHover{
+	background-color: #FFFACD;
+}
+
 th, td {
 	padding: 10px 10px 10px 10px;
 	border-right: 4px solid #FFFFFF;

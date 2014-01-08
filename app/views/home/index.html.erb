@@ -1,8 +1,15 @@
-
+<%= javascript_include_tag 'jqueryTutorial.js' %>
+<p id="no-script">
+	Javascript is awesome and makes this site even more awesome. You should have it enabled!
+</p>
 <% if signed_in? %>
 	<div class="row-fluid">
 		<!-- <div class="span8"> -->
 		<aside class="span12">
+			<!-- <section>
+				<p class="disclaimer">This is a disclaimer</p>
+				<input type="button" id="togDisclaimer" value="Hide" />
+			</section> -->
 			<section>
 				<%= render 'shared/user_info' %>
 			</section>

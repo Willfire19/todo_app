@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require_tree .
+
 //= require elementQuery.js
 //= require elementQuery.min.js
