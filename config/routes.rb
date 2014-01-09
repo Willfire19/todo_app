@@ -19,6 +19,7 @@ TodoApp::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :password_resets
   
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

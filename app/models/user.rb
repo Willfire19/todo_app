@@ -25,6 +25,13 @@ class User < ActiveRecord::Base
   			format: { with: VALID_EMAIL_REGEX },
   			uniqueness: { case_sensitive: false }
 
+  def send_password_reset
+    create_password_reset_token
+    self.password_reset_sent_at = Time.zone.now
+    save!(validate: false)
+    UserMailer.password_reset(self).deliver
+  end
+
   def feed
     #Todo.from_users_followed_by(self)
     List.from_users_followed_by(self)
@@ -43,6 +50,10 @@ class User < ActiveRecord::Base
   end
   
   private
+
+    def create_password_reset_token
+      self.password_reset_token = SecureRandom.urlsafe_base64
+    end
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
