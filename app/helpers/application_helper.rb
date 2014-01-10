@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def full_title(page_title)
-		base_title = "Todo App"
+		base_title = "TodoRaider"
 		if page_title.empty?
 			base_title
 		else
