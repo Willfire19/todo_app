@@ -8,7 +8,7 @@
   </div>
   <div class="field">
     <%= f.label :list_id, 'List' %><br/>
-    <%= f.collection_select(:list_id, @user.lists, :id, :name) %>
+    <%= f.collection_select(:list_id, @user.lists, :id, :name, {include_blank: true}) %>
   </div>
   <% if params[:action] == "edit" || params[:action] == "update" %>
     <div class="field">
