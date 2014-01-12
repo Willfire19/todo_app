@@ -58,6 +58,12 @@ describe "Todo pages" do
   		it "should create a todo" do
   			expect { click_button 'Submit' }.to change(Todo, :count).by(1)
   		end
+
+      describe "should direct to the home page" do
+        it { should have_selector('title', text: 'TodoRaider | Home') }
+         # it { should have_selector('h1', text: user.username) }
+      end
+
   	end
   end
 
@@ -85,6 +91,11 @@ describe "Todo pages" do
       end
 
       it { should have_selector('div.alert.alert-success') }
+
+      describe "should direct to home page" do
+        it { should have_selector('title', text: 'TodoRaider | Home') }
+      end
+
     end
 
     describe "with invalid information" do
@@ -134,7 +145,7 @@ describe "Todo pages" do
           page.driver.browser.switch_to.alert.accept
         end
 
-        it { should have_selector('title', text: 'Listing todos') }
+        it { should have_selector('title', text: 'TodoRaider | Todos') }
       end
     end
   end
