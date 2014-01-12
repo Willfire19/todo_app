@@ -31,6 +31,7 @@ class TodosController < ApplicationController
   def new
     @user = current_user
     @todo = Todo.new
+    session[:prev_page] = request.referer
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +44,7 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
     @todo.user = User.find_by_id(params[:user_id])
     @user = @todo.user
+    session[:prev_page] = request.referer
   end
 
   # POST /todos
@@ -54,7 +56,8 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         
-        format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created!' }
+        # format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created!' }
+        format.html { redirect_to session[:prev_page], notice: 'Todo was successfully created!' }
         format.json { render json: @user, status: :created, location: @user }
       else
         @feed_items = []
@@ -73,7 +76,8 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       if @todo.update_attributes(params[:todo])
-        format.html { redirect_to user_todo_path, notice: 'Todo was successfully updated.' }
+        # format.html { redirect_to user_todo_path, notice: 'Todo was successfully updated.' }
+        format.html { redirect_to session[:prev_page], notice: 'Todo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
