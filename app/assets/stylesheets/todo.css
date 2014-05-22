@@ -1,0 +1,74 @@
+/* _todo.html.erb */
+
+@media all and (max-width: 940px) {
+	.todo-tag {
+		display: none;
+	}
+
+	#numbers {
+		display: none;
+	}
+}
+
+@media all and (max-width: 760px) {
+	#numbers {
+		display: none;
+	}
+}
+
+#todo{
+	margin: 6px;
+	padding: 4px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 10px;
+	-moz-box-shadow: 5px 5px 5px 5px #777777;
+	-webkit-box-shadow: 5px 5px 5px 5px #777777;
+	box-shadow: 5px 5px 5px 5px #777777;
+}
+
+#borderBottom{
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+#marginTop{
+	margin-top: 20px;
+}
+#padBottom{
+	/*margin-bottom: 10px;*/
+}
+
+#todo-tag {
+	font-size: 200%;
+}
+
+#listName {
+	font-size: 150%;
+	font-style: bold;
+}
+
+#entry {
+	font-size: 150%;
+	text-align: left;
+	line-height: 1.5em;
+} 
+ 
+#numbers {
+	font-size: 300%;
+	text-align: center;
+}
+
+#dueDate{
+	font-size: 150%;
+	text-align: right;
+} 
+
+#status{
+	font-size: 150%;
+}
+
+#links {
+	margin-top: 20px;
+	text-align: center;
+}

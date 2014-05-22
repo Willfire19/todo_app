@@ -18,9 +18,21 @@
 			<section>
 				<%= render 'shared/stats' %>
 			</section>
-			<section class="todo_table">
-				<%= render 'todos/todo_table' %>
-			</section>
+			<% if @user == current_user %>
+		    <b>Todos (<%= @user.todos.count %>)<%= link_to ' Add a New Todo!', new_user_todo_path(@user) %></b>
+		    <b>Lists (<%= @user.lists.count %>)<%= link_to ' Add a New List!', new_user_list_path(@user) %></b>
+		  <% else %>
+		    <b>Todos (<%= @user.todos.count %>)</b>
+		    <b>Lists (<%= @user.lists.count %>)</b>
+		  <% end %>
+			<% if @user.todos.any? %>
+			<div class="row-fluid">
+				<!-- <%= render 'todos/todo_table' %> -->
+				<% @todos.each do |todo| %>
+					<%= render 'todos/todo', :todo => todo %>
+				<% end %>
+			</div>
+			<% end %>
 
 		</aside>
 		<!-- <div class="span4">

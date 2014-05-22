@@ -2,6 +2,10 @@
 
 /* universal */
 
+.row-fluid [class*="span"]:nth-child(3n+1) {
+   margin-left: 0;
+}
+
 html {
 	overflow-y: scroll;
 }
