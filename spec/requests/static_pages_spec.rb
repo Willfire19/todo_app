@@ -17,11 +17,11 @@ describe "Static pages"  do
 
 			it { should have_link("Add a New List!", href: new_user_list_path(user)) }
 
-			it "should render the user's feed" do
-				user.feed.each do |item|
-					page.should have_selector("li##{item.id}", text: item.entry)
-				end
-			end
+			# it "should render the user's feed" do
+			# 	user.feed.each do |item|
+			# 		page.should have_selector("li##{item.id}", text: item.entry)
+			# 	end
+			# end
 
 			describe "follower/following counts" do
 				let(:other_user) { FactoryGirl.create(:user) }
