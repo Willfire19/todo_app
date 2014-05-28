@@ -21,13 +21,13 @@ TodoApp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :password_resets
   
-  match '/signup', to: 'users#new'
-  match '/signin', to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
-  match '/contact', to: 'static_pages#contact'
-  match '/about', to: 'static_pages#about'
-  match '/version', to: 'static_pages#version_updates'
-  match '/home', to: 'home#index'
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/version', to: 'static_pages#version_updates', via: 'get'
+  match '/home', to: 'home#index', via: 'get'
 
   root :to => 'home#index'
   

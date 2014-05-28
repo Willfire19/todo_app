@@ -17,7 +17,7 @@ class Todo < ActiveRecord::Base
   validates :priority, :inclusion => 0..11
   # validates :list_id, :presence => true
 
-  default_scope order: 'todos.created_at DESC'
+  default_scope { order('todos.created_at DESC') }
 
   # Returns todos from the users being followed by the given user.
   def self.from_users_followed_by(user)

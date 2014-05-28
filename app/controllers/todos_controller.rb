@@ -57,7 +57,8 @@ class TodosController < ApplicationController
       if @todo.save
         
         # format.html { redirect_to user_todo_path(@user, @todo), notice: 'Todo was successfully created!' }
-        format.html { redirect_to session[:prev_page], notice: 'Todo was successfully created!' }
+        # format.html { redirect_to session[:prev_page], notice: 'Todo was successfully created!' }
+        format.html { redirect_to home_path, notice: 'Todo was successfully created!' }
         format.json { render json: @user, status: :created, location: @user }
       else
         @feed_items = []

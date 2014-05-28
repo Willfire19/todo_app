@@ -40,4 +40,6 @@ TodoApp::Application.configure do
   silence_warnings do
     BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
   end
+
+  config.eager_load = false
 end

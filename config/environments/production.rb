@@ -76,4 +76,6 @@ TodoApp::Application.configure do
     password: "ThisPasswordSucks"
   }
   config.action_mailer.default_url_options = { :host => "todoraider.herokuapp.com" }
+
+  config.eager_load = true
 end
