@@ -91,7 +91,8 @@ describe "Authentication" do
 
 					describe "submitting a PUT request to the Users#update action" do
 						before { put user_path(wrong_user) }
-						specify { response.should redirect_to(root_path) }
+						# specify { response.should redirect_to(root_path) }
+						specify { response.should redirect_to(signin_path) }
 					end
 				end
 
@@ -111,13 +112,18 @@ describe "Authentication" do
 				end
 			end
 
-			describe "in the Todos controller" do
+			describe "in the Todos Controller" do
 				let(:user) { FactoryGirl.create(:user) }
 
 				describe "submitting to the create action" do
 					before { post user_todos_path(user) }
 					specify { response.should redirect_to(signin_path) }
 				end
+
+				# it "submitting to the create action" do
+				# 	post user_todos_path(user)
+				# 	specify { response.should redirect_to(signin_path) }
+				# end
 
 				describe "submitting to the destroy action" do
 					before { delete user_todo_path(user, FactoryGirl.create(:todo, user: user)) }
@@ -146,7 +152,8 @@ describe "Authentication" do
 
 			describe "submitting a DELETE request to the Users#destroy action" do
 				before { delete user_path(user) }
-				specify { response.should redirect_to(root_path) }
+				# specify { response.should redirect_to(root_path) }
+				specify { response.should redirect_to(signin_path) }
 			end
 		end
 	end

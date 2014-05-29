@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rspec/its'
+# require 'rspec/its'
 
 describe Relationship do
   

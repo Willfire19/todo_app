@@ -9,13 +9,13 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'jquery-rails'
 gem 'activeresource'
 gem 'protected_attributes', github: 'rails/protected_attributes'
-gem 'rspec-its'
+#gem 'rspec-its'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.9'
-	gem "rspec-rails", "~> 3.0.0.beta"
+	gem "rspec-rails", "~> 2.14.2"
 	gem 'pry' 
 	gem 'pry-nav'
 	# gem 'gaurd-rspec', '1.2.1'

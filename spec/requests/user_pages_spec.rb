@@ -111,7 +111,7 @@ describe "User pages" do
 
         describe "toggling the button" do
           before { click_button "Unfollow" }
-          it { should have_selector('input', value: 'Follow') }
+          it { should have_xpath("//input[@value='Follow']") }
         end
       end
     end
