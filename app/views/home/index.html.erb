@@ -6,9 +6,9 @@
 	Javascript is awesome and makes this site even more awesome. You should have it enabled!
 </p>
 <% if signed_in? %>
-	<div class="row-fluid">
+	<div class="row">
 		<!-- <div class="span8"> -->
-		<aside class="span12">
+		<aside class="col-xs-12">
 			<!-- <section>
 				<p class="disclaimer">This is a disclaimer</p>
 				<input type="button" id="togDisclaimer" value="Hide" />
@@ -27,7 +27,7 @@
 		    <b>Lists (<%= @user.lists.count %>)</b>
 		  <% end %>
 			<% if @user.todos.any? %>
-			<div class="row-fluid">
+			<div class="row">
 				<!-- <%= render 'todos/todo_table' %> -->
 				<% @todos.each do |todo| %>
 					<%= render 'todos/todo', :todo => todo %>
