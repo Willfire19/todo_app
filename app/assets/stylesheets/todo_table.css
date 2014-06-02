@@ -47,6 +47,7 @@ th, td {
 	padding: 10px 10px 10px 10px;
 	border-right: 4px solid #FFFFFF;
 	text-align: center;
+	font-size: 100%;
 }
 
 .todo-entry{
@@ -68,6 +69,7 @@ td.todo-list {
 td.todo-entry {
 	font-size: 200%;
 	text-align: left;
+	line-height: 1.0em;
 } 
  
 .todo-calc {} 
@@ -79,6 +81,10 @@ td.todo-priority{
 td.numbers {
 	font-size: 300%;
 } 
+
+th.numbers {
+	font-size: 100%;
+}
 
 .todo-status{
 	width: 20%;
