@@ -29,6 +29,19 @@
 	box-shadow: 0px 5px 0px #777777;
 }
 
+.todo_material{
+	margin: -10px;
+	margin-top: 20px;
+	padding: 15px;
+	/*border-style: solid;
+	border-width: 1px;
+	border-color: #777777;*/
+	/*border-radius: 10px;*/
+	/*-moz-box-shadow: 0px 5px 0px #777777;
+	-webkit-box-shadow: 0px 5px 0px #777777;
+	box-shadow: 0px 5px 0px #777777;*/
+}
+
 #borderBottom{
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
@@ -54,6 +67,13 @@
 	font-size: 150%;
 	text-align: left;
 	line-height: 1.5em;
+}
+
+.entry_material {
+	font-size: 150%;
+	text-align: left;
+	padding-bottom: 10px;
+	/*line-height: 1.5em;*/
 } 
  
 .numbers {
@@ -64,9 +84,19 @@
 .dueDate{
 	font-size: 150%;
 	text-align: right;
+}
+
+.dueDate_material{
+	font-size: 150%;
+	text-align: right;
 } 
 
 .status{
+	font-size: 150%;
+	margin-bottom: 5px;
+}
+
+.status_material{
 	font-size: 150%;
 	margin-bottom: 5px;
 }
@@ -107,4 +137,28 @@
 	-moz-box-shadow: 0px 5px 0px #00bb72;
 	-webkit-box-shadow: 0px 5px 0px #00bb72;
 	box-shadow: 0px 5px 0px #00bb72;
+}
+
+.status-MTodo{
+	background-color: #3D8A99;
+	border-radius: 5px;
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.status-MInProgress{
+	background-color: #14AECC;
+	border-radius: 5px;
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.status-MComplete{
+	background-color: #00FF9B;
+	border-radius: 5px;
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }

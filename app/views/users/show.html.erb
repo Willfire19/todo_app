@@ -1,40 +1,61 @@
 <% provide(:title, @user.username) %>
+<%= javascript_include_tag 'jqueryTutorial' %>
+<%= javascript_include_tag 'todo' %>
 <head>
   <title><%= yield :title %></title>
   <!--
   <link rel="stylesheet" href="todo_table.css">
 -->
 </head>
-<h1>
-	<%= yield :title %>
-	<%= gravatar_for @user %>
-</h1>
-<div class="profile">
-  <section>
-  	<%= render 'shared/stats' %>
-  </section>
-  <div class="span8">
-  	<%= render 'follow_form' if signed_in? %>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>
+    	<%= yield :title %>
+    	<%= gravatar_for @user %>
+    </h1>
   </div>
-  <p id="notice"><%= notice %></p>
-
-  <p>
-    <b>Username:</b>
-    <%= @user.username %>
-  </p>
-
-  <p>
-    <b>Email:</b>
-    <%= @user.email %>
-  </p>
-  <section>
-    <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Back', users_path %>
-  </section>
-  <section>
-    <%= render "todos/todo_table" %>
-  </section>
 </div>
+<div class="row">
+  <div class="col-xs-12">
+
+    <div class="profile">
+      <section>
+      	<%= render 'shared/stats' %>
+      </section>
+      <div class="span8">
+      	<%= render 'follow_form' if signed_in? %>
+      </div>
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <b>Username:</b>
+        <%= @user.username %>
+      </p>
+
+      <p>
+        <b>Email:</b>
+        <%= @user.email %>
+      </p>
+      <section>
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+        <%= link_to 'Back', users_path %>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <!-- <section> -->
+      <!-- <%= render "todos/todo_table" %> -->
+
+      <div class="row">
+        <!-- <%= render 'todos/todo_table' %> -->
+        <% @todos.each do |todo| %>
+          <%= render 'todos/todo_material', :todo => todo %>
+        <% end %>
+      </div>
+    <!-- </section> -->
+  </div>
 </div>
 
 
