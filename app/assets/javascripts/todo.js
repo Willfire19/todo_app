@@ -10,4 +10,8 @@ $(document).ready(function() {
 
 	$('.advanced').hide();
 
+	$('.todo_material').click(function() {
+		$(this).find('.advanced').slideToggle();
+	});
+
 });
