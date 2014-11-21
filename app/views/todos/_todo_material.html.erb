@@ -1,11 +1,17 @@
 
 <div class="col-xs-12 col-sm-8 col-sm-offset-2" >
 	<div class="todo_material">
-		<div class="row" id="borderBottom">
-			<div class="col-xs-2 status_material"><%= todo.status %></div>
-			<div class="col-xs-8 entry_material"><%= todo.entry %></div>
+		<div class="row default" id="borderBottom">
+			<div class="col-xs-10 entry_material"><%= todo.entry %></div>
 			<div class="col-xs-2 dueDate"><%= l todo.dueDate, format: :duedate %></div>
 		</div>
+		<div class="row advanced" id="borderBottom">
+			<div class="col-xs-2 status_material"><%= todo.status %></div>
+		</div>
+
+
+			<!-- <div class="col-xs-2 status_material"><%= todo.status %></div> -->
+
 		<!-- <div class="row" id="borderBottom">
 			
 		</div> -->
@@ -21,12 +27,11 @@
 		</div>
 	-->
 		<% if current_user?(todo.user) %>
-		<div class="row">
+		<div class="row default">
 			<div class="col-xs-4 links"><%= link_to 'Show', user_todo_path(current_user, todo) %></div>
 			<div class="col-xs-4 links"><%= link_to 'Edit', edit_user_todo_path(current_user, todo) %></div>
 			<div class="col-xs-4 links"><%= link_to "Delete", user_todo_path(current_user, todo), method: :delete, data: { confirm: "You sure?" }, title: todo.entry %></div>
 		</div>
 		<% end %>
-		<paper-ripple fit></paper-ripple>
 	</div>
 </div>

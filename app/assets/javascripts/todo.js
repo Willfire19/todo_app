@@ -8,4 +8,6 @@ $(document).ready(function() {
 	$('.todo_material').has(".status_material:contains('In Progress')").addClass('status-MInProgress');
 	$('.todo_material').has(".status_material:contains('To Do')").addClass('status-MTodo');
 
+	$('.advanced').hide();
+
 });
