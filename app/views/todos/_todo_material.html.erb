@@ -10,12 +10,12 @@
 			<div class="col-xs-12 status_material">Status: <%= todo.status %></div><br>
 		</div>
 		<div class="row default" id="borderBottom">
-			<div class="col-xs-10 entry_material"><%= todo.entry %></div>
-			<div class="col-xs-2 dueDate"><%= l todo.dueDate, format: :duedate %></div>
+			<div class="col-xs-12 entry_material"><%= todo.entry %></div>	
 		</div>
 		<div class="row advanced" id="padBottom">
-			<div class="col-xs-6 numbers"><h4>Difficulty</h4> <%= todo.difficulty %></div>
-			<div class="col-xs-6 numbers"><h4>Priority</h4> <%= todo.priority %></div>
+			<div class="col-xs-4 numbers_material"><h4>Difficulty</h4> <%= todo.difficulty %></div>
+			<div class="col-xs-4 numbers_material"><h4>Priority</h4> <%= todo.priority %></div>
+			<div class="col-xs-4 dueDate_material"><h4>Due Date</h4><%= l todo.dueDate, format: :duedate %></div>
 		</div>
 
 		<% if current_user?(todo.user) %>

@@ -110,14 +110,19 @@
 	text-align: center;
 }
 
+.numbers_material {
+	font-size: 300%;
+	text-align: center;
+}
+
 .dueDate{
 	font-size: 150%;
 	text-align: right;
 }
 
 .dueDate_material{
-	font-size: 150%;
-	text-align: right;
+	font-size: 300%;
+	text-align: center;
 } 
 
 .status{
