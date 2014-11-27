@@ -1,6 +1,7 @@
 <% provide(:title, @user.username) %>
 <%= javascript_include_tag 'jqueryTutorial' %>
 <%= javascript_include_tag 'todo' %>
+<%= javascript_include_tag 'list_sort' %>
 <head>
   <title><%= yield :title %></title>
   <!--
@@ -44,17 +45,20 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">
-    <!-- <section> -->
-      <!-- <%= render "todos/todo_table" %> -->
-
-      <div class="row">
-        <!-- <%= render 'todos/todo_table' %> -->
-        <% @todos.each do |todo| %>
-          <%= render 'todos/todo_material', :todo => todo %>
-        <% end %>
-      </div>
-    <!-- </section> -->
+  <div class="col-xs-12 col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
+    <li role="presentation" class="list_sort active"><a href="#">All</a></li>
+    <% @lists.each do |list| %>
+      <%= render 'lists/list_sort', :list => list %>
+    <% end %>
+</ul>
+  </div>
+  <div class="col-xs-12 col-sm-9">
+    <div class="row">
+      <% @todos.each do |todo| %>
+        <%= render 'todos/todo_material', :todo => todo %>
+      <% end %>
+    </div>
   </div>
 </div>
 
