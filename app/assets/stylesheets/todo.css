@@ -31,18 +31,18 @@
 
 .todo_material{
 	/*margin: -10px;*/
-	position: relative;
+	/*position: relative;*/
 	z-index: 1;
 	margin-top: 20px;
 	padding: 15px;
 	border-radius: 5px;
 	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-	transition: 0.2s ease-in-out;
+	/*transition: 0.2s ease-in-out;*/
 	
-  transition-delay: 0.2s;
-	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  /*transition-delay: 0.2s;*/
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.30);
 	/*border-style: solid;
 	border-width: 1px;
 	border-color: #777777;*/
@@ -54,8 +54,11 @@
 
 .todo_material:hover{
 	z-index: 2;
-	transform: scale(1.05);
+	/*transform: scale(1.05);*/
+	cubic-bezier(0.4, 0, 0.2, 1);
+	/*box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.26);*/
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+
   transition-delay: 0s;
 }
 

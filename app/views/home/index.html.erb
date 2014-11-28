@@ -2,6 +2,7 @@
 <title><%= yield :title %></title>
 <%= javascript_include_tag 'jqueryTutorial' %>
 <%= javascript_include_tag 'todo' %>
+<%= javascript_include_tag 'list_sort' %>
 <p id="no-script">
 	Javascript is awesome and makes this site even more awesome. You should have it enabled!
 </p>
@@ -27,12 +28,29 @@
 		    <b>Lists (<%= @user.lists.count %>)</b>
 		  <% end %>
 			<% if @user.todos.any? %>
-			<div class="row">
-				<!-- <%= render 'todos/todo_table' %> -->
-				<% @todos.each do |todo| %>
-					<%= render 'todos/todo', :todo => todo %>
-				<% end %>
-			</div>
+				<!--<div class="row"> -->
+					<!-- <%= render 'todos/todo_table' %> -->
+					<!-- <% @todos.each do |todo| %>
+						<%= render 'todos/todo', :todo => todo %>
+					<% end %>
+				</div> -->
+				<div class="row">
+				  <div class="col-xs-12 col-sm-3">
+				    <ul class="nav nav-pills nav-stacked" style="margin-top: 20px;">
+				    <li role="presentation" class="list_sort active"><a href="#">All</a></li>
+				    <% @lists.each do |list| %>
+				      <%= render 'lists/list_sort', :list => list %>
+				    <% end %>
+				    </ul>
+				  </div>
+				  <div class="col-xs-12 col-sm-9">
+				    <div class="row">
+				      <% @todos.each do |todo| %>
+				        <%= render 'todos/todo_material', :todo => todo %>
+				      <% end %>
+				    </div>
+				  </div>
+				</div>
 			<% end %>
 
 		</aside>
