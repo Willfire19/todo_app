@@ -1,53 +1,72 @@
 <%= javascript_include_tag 'todo_form.js' %>
-<%= form_for([@user, @todo]) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
+<div class="col-xs-12 col-sm-10 col-sm-offset-1" >
+  <div class="todo_material">
+    <%= form_for([@user, @todo]) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 listName_material">
+          <div class="field">
+            <%= f.label :list_id, 'List' %>
+            <%= f.collection_select(:list_id, @user.lists, :id, :name, {include_blank: true}) %>
+          </div>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :entry, 'Entry' %><br />
-    <%= f.text_area :entry, size: "30x3" %>
+      <div class="row">
+        <div class="col-xs-12 status_material">
+          <% if params[:action] == "edit" || params[:action] == "update" %>
+            <div class="field">
+              <%= f.label :status, 'Status' %>
+              <%= f.select :status, options_for_select([["To Do", "To Do"], ["In Progress", "In Progress"], ["Complete!", "Complete!"]]) %>
+            </div>
+          <% else %>
+            <div class="field">
+              <%= f.label :status, 'Status' %>
+              <%= f.select :status, options_for_select([["To Do", "To Do"], ["In Progress", "In Progress"]]) %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 entry_material">
+          <div class="field">
+            <%= f.label :entry, 'Entry' %><br />
+            <%= f.text_area :entry, size: "30x3" %>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="actions">
+        <button class="btn btn-large btn-info" id="advanced_options" type="button">Advanced Options</button>
+      </div>
+      <div class="advanced">
+        <div class="field">
+          <%= f.label :tag, 'Tag' %><br />
+          <%= f.text_field :tag %>
+        </div>
+        <div class="field">
+          <%= f.label :dueDate, 'DueDate' %><br />
+          <%= f.date_select :dueDate %>
+        </div>
+        <div class="field">
+          <%= f.label :assignedDate, 'AssignedDate' %><br/>
+          <%= f.date_select :assignedDate %>
+        </div>
+        <div class="field">
+          <%= f.label :difficulty, 'Difficulty' %><br />
+          <%= f.number_field :difficulty, in: 0..100 %>
+        </div>
+        <div class="field">
+          <%= f.label :priority, 'Priority' %><br />
+          <%= f.number_field :priority, in: 0..11 %>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <%= f.submit 'Submit', class: "btn btn-large btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :list_id, 'List' %><br/>
-    <%= f.collection_select(:list_id, @user.lists, :id, :name, {include_blank: true}) %>
-  </div>
-  <% if params[:action] == "edit" || params[:action] == "update" %>
-    <div class="field">
-      <%= f.label :status, 'Status' %><br/>
-      <%= f.select :status, options_for_select([["To Do", "To Do"], ["In Progress", "In Progress"], ["Complete!", "Complete!"]]) %>
-    </div>
-  <% else %>
-    <div class="field">
-      <%= f.label :status, 'Status' %><br/>
-      <%= f.select :status, options_for_select([["To Do", "To Do"], ["In Progress", "In Progress"]]) %>
-    </div>
-  <% end %>
-  <div class="actions">
-    <button class="btn btn-large btn-info" id="advanced_options" type="button">Advanced Options</button>
-  </div>
-  <div class="advanced">
-    <div class="field">
-      <%= f.label :tag, 'Tag' %><br />
-      <%= f.text_field :tag %>
-    </div>
-    <div class="field">
-      <%= f.label :dueDate, 'DueDate' %><br />
-      <%= f.date_select :dueDate %>
-    </div>
-    <div class="field">
-      <%= f.label :assignedDate, 'AssignedDate' %><br/>
-      <%= f.date_select :assignedDate %>
-    </div>
-    <div class="field">
-      <%= f.label :difficulty, 'Difficulty' %><br />
-      <%= f.number_field :difficulty, in: 0..100 %>
-    </div>
-    <div class="field">
-      <%= f.label :priority, 'Priority' %><br />
-      <%= f.number_field :priority, in: 0..11 %>
-    </div>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit 'Submit', class: "btn btn-large btn-primary" %>
-  </div>
-<% end %>
+</div>

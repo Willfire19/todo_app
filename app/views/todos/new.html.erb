@@ -2,6 +2,14 @@
 <title><%= yield :title %></title>
 <h1>New todo</h1>
 
-<%= render 'form' %>
+<div class="row">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
+		<div class="row">
+
+			<%= render 'form' %>
+
+		</div>
+	</div>
+</div>
 
 <%= link_to 'Back', user_path(@user) %>
