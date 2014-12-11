@@ -119,6 +119,11 @@
 	text-align: center;
 }
 
+.numbers_form {
+	font-size: 100%;
+	text-align: center;
+}
+
 .dueDate{
 	font-size: 150%;
 	text-align: right;
@@ -126,6 +131,11 @@
 
 .dueDate_material{
 	font-size: 300%;
+	text-align: center;
+} 
+
+.dueDate_form{
+	font-size: 100%;
 	text-align: center;
 } 
 

@@ -41,27 +41,36 @@
       <div class="actions">
         <button class="btn btn-large btn-info" id="advanced_options" type="button">Advanced Options</button>
       </div>
-      <div class="advanced">
-        <div class="field">
+      <div class="advanced row">
+        <!-- <div class="field">
           <%= f.label :tag, 'Tag' %><br />
           <%= f.text_field :tag %>
+        </div> -->
+        <div class="col-xs-4 dueDate_form">
+          <div class="field">
+            <%= f.label :dueDate, 'DueDate' %><br />
+            <%= f.date_select :dueDate %>
+          </div>
+          <div class="field">
+            <%= f.label :assignedDate, 'AssignedDate' %><br/>
+            <%= f.date_select :assignedDate %>
+          </div>
         </div>
-        <div class="field">
-          <%= f.label :dueDate, 'DueDate' %><br />
-          <%= f.date_select :dueDate %>
+
+        <div class="col-xs-4 numbers_form">
+          <div class="field">
+            <%= f.label :difficulty, 'Difficulty' %><br />
+            <%= f.number_field :difficulty, in: 0..100 %>
+          </div>
         </div>
-        <div class="field">
-          <%= f.label :assignedDate, 'AssignedDate' %><br/>
-          <%= f.date_select :assignedDate %>
+
+        <div class="col-xs-4 numbers_form">        
+          <div class="field">
+            <%= f.label :priority, 'Priority' %><br />
+            <%= f.number_field :priority, in: 0..11 %>
+          </div>
         </div>
-        <div class="field">
-          <%= f.label :difficulty, 'Difficulty' %><br />
-          <%= f.number_field :difficulty, in: 0..100 %>
-        </div>
-        <div class="field">
-          <%= f.label :priority, 'Priority' %><br />
-          <%= f.number_field :priority, in: 0..11 %>
-        </div>
+
       </div>
       
       <div class="actions">
