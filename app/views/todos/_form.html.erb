@@ -1,6 +1,6 @@
 <%= javascript_include_tag 'todo_form.js' %>
 <div class="col-xs-12 col-sm-10 col-sm-offset-1" >
-  <div class="todo_material">
+  <div class="todo_material_form">
     <%= form_for([@user, @todo]) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="row">
@@ -41,7 +41,7 @@
       <div class="actions">
         <button class="btn btn-large btn-info" id="advanced_options" type="button">Advanced Options</button>
       </div>
-      <div class="advanced row">
+      <div class="advanced_options row">
         <!-- <div class="field">
           <%= f.label :tag, 'Tag' %><br />
           <%= f.text_field :tag %>

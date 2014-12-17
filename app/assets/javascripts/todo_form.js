@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-	$('.advanced').hide();
+	$('.advanced_options').hide();
 	
 	$('#advanced_options').click(function() {
-		$('.advanced').slideToggle('slow');
+		$('.advanced_options').slideToggle('slow');
 	});
 
 });
