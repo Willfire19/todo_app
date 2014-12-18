@@ -1,26 +1,9 @@
 <%= provide(:title, "Todo") %>
+<%= javascript_include_tag 'todo' %>
 <title><%= yield :title %></title>
-<p id="notice"><%= notice %></p>
-<p>
-  <b>Entry:</b>
-  <%= @todo.entry %>
-</p>
 
-<p>
-  <b>Duedate:</b>
-  <%= @todo.dueDate %>
-</p>
-
-<p>
-  <b>Assigneddate:</b>
-  <%= @todo.assignedDate %>
-</p>
-
-<p>
-  <b>Priority:</b>
-  <%= @todo.priority %>
-</p>
+<div class="row">
+	<%=render 'todo_material', :todo => @todo %>
+</div>
 
 
-<%= link_to 'Edit', edit_user_todo_path(@user, @todo) %> |
-<%= link_to 'Back', user_path(@user) %>
