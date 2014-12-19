@@ -1,9 +1,11 @@
 <div class="col-xs-12 col-sm-10 col-sm-offset-1" >
   <div class="user_form">
-    <div class="gravatar">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails">Change</a>
-    </div>
+    <% if params[:action] == "edit" || params[:action] == "update" %>
+      <div class="gravatar">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails">Change</a>
+      </div>
+    <% end %>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
