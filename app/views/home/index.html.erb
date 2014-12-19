@@ -17,9 +17,9 @@
 			<section>
 				<%= render 'shared/user_info' %>
 			</section>
-			<section>
+			<!-- <section>
 				<%= render 'shared/stats' %>
-			</section>
+			</section> -->
 			<% if @user == current_user %>
 		    <b>Todos (<%= @user.todos.count %>)<%= link_to ' Add a New Todo!', new_user_todo_path(@user) %></b>
 		    <b>Lists (<%= @user.lists.count %>)<%= link_to ' Add a New List!', new_user_list_path(@user) %></b>
