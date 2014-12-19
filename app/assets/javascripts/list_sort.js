@@ -1,5 +1,18 @@
 $(document).ready(function() {
 
+	$('.todo_material_form').hide();
+	$('.list_form').hide();
+
+	$('.new_form').click(function() {
+		$(this).toggleClass('active');
+		if ( $(this).text() == "New Todo" ) {
+			$('.todo_material_form').toggle("slide");
+		}
+		if ( $(this).text() == "New List" ) {
+			$('.list_form').toggle("slide");
+		}
+	})
+
 	$('.list_sort').click(function() {
 		$('.list_sort').removeClass('active');
 		$(this).addClass('active');

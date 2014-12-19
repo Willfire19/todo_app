@@ -20,9 +20,9 @@
 
 		<% if current_user?(todo.user) %>
 		<div class="row default">
-			<div class="col-xs-4 links"><%= link_to 'Show', user_todo_path(current_user, todo) %></div>
-			<div class="col-xs-4 links"><%= link_to 'Edit', edit_user_todo_path(current_user, todo) %></div>
-			<div class="col-xs-4 links"><%= link_to "Delete", user_todo_path(current_user, todo), method: :delete, data: { confirm: "You sure?" }, title: todo.entry %></div>
+			<div class="col-xs-4 links"><%= link_to 'SHOW', user_todo_path(current_user, todo) %></div>
+			<div class="col-xs-4 links"><%= link_to 'EDIT', edit_user_todo_path(current_user, todo) %></div>
+			<div class="col-xs-4 links"><%= link_to "DELETE", user_todo_path(current_user, todo), method: :delete, data: { confirm: "You sure?" }, title: todo.entry %></div>
 		</div>
 		<% end %>
 	</div>
