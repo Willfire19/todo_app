@@ -12,4 +12,11 @@
 		</strong>
 		followers
 	</a>
+	<% if @user == current_user %>
+    <b>Todos (<%= @user.todos.count %>)<%= link_to ' Add a New Todo!', new_user_todo_path(@user) %></b>
+    <b>Lists (<%= @user.lists.count %>)<%= link_to ' Add a New List!', new_user_list_path(@user) %></b>
+  <% else %>
+    <b>Todos (<%= @user.todos.count %>)</b>
+    <b>Lists (<%= @user.lists.count %>)</b>
+  <% end %>
 </div>

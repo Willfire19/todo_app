@@ -8,25 +8,7 @@
 </p>
 <% if signed_in? %>
 	<div class="row">
-		<!-- <div class="span8"> -->
 		<aside class="col-xs-12">
-			<!-- <section>
-				<p class="disclaimer">This is a disclaimer</p>
-				<input type="button" id="togDisclaimer" value="Hide" />
-			</section> -->
-			<section>
-				<%= render 'shared/user_info' %>
-			</section>
-			<!-- <section>
-				<%= render 'shared/stats' %>
-			</section> -->
-			<% if @user == current_user %>
-		    <b>Todos (<%= @user.todos.count %>)<%= link_to ' Add a New Todo!', new_user_todo_path(@user) %></b>
-		    <b>Lists (<%= @user.lists.count %>)<%= link_to ' Add a New List!', new_user_list_path(@user) %></b>
-		  <% else %>
-		    <b>Todos (<%= @user.todos.count %>)</b>
-		    <b>Lists (<%= @user.lists.count %>)</b>
-		  <% end %>
 			<% if @user.todos.any? %>
 				<div class="row">
 				  <div class="col-xs-12 col-sm-3">
@@ -45,8 +27,6 @@
 				  </div>
 				  <div class="col-xs-12 col-sm-9">
 				  	<div class="row">
-				  		<!-- <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="height:100px;background-color:blue;" >
-				  		</div> -->
 				  		<%= render 'todos/form' %>
 				  	</div>
 				  	<div class="row">
