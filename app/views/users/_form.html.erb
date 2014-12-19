@@ -1,23 +1,31 @@
-<%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
+<div class="col-xs-12 col-sm-10 col-sm-offset-1" >
+  <div class="user_form">
+    <div class="gravatar">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails">Change</a>
+    </div>
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+      <div class="field">
+        <%= f.label :username %><br />
+        <%= f.text_field :username %>
+      </div>
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirmation" %><br />
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+      </div>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
-  </div>
-<% end %>
+</div>

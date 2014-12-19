@@ -18,8 +18,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @todos = @user.todos.paginate(page: params[:page])
-    @lists = @user.lists
+    # @todos = @user.todos.paginate(page: params[:page])
+    # @lists = @user.lists
 
     respond_to do |format|
       format.html # show.html.erb
