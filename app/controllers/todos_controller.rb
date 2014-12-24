@@ -60,6 +60,7 @@ class TodosController < ApplicationController
         # format.html { redirect_to session[:prev_page], notice: 'Todo was successfully created!' }
         format.html { redirect_to home_path, notice: 'Todo was successfully created!' }
         format.json { render json: @user, status: :created, location: @user }
+        format.js {}
       else
         @feed_items = []
         format.html { render action: "new" }

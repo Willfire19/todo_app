@@ -34,7 +34,7 @@
 				  		</div> -->
 				  		<%= render 'lists/form' %>
 				  	</div>
-				    <div class="row">
+				    <div class="row" id="todos">
 				      <% @todos.each do |todo| %>
 				        <%= render 'todos/todo_material', :todo => todo %>
 				      <% end %>

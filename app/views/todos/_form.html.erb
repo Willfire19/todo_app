@@ -2,7 +2,7 @@
 <div class="col-xs-12 col-sm-10 col-sm-offset-1" >
   <div class="todo_material_form">
     <h3 style="text-align: center;">New Todo</h3>
-    <%= form_for([@user, @todo]) do |f| %>
+    <%= form_for([@user, @todo], remote: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2 listName_material">
