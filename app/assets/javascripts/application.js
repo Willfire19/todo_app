@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require turbolinks
 
 //= require elementQuery.js
 //= require elementQuery.min.js

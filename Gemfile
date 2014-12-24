@@ -10,6 +10,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'jquery-rails'
 gem 'activeresource'
 gem 'protected_attributes', github: 'rails/protected_attributes'
+gem 'turbolinks'
 #gem 'rspec-its'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
