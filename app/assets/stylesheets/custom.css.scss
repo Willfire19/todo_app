@@ -1,7 +1,7 @@
 @import "bootstrap";
 
 body{
-	padding-top: 70px;
+	padding-top: 60px;
 }
 
 /* universal */
@@ -9,6 +9,28 @@ body{
 
 .row-fluid [class*="span"]:nth-child(3n+1) {
    margin-left: 0;
+}
+
+.card {
+
+	border-radius: 5px;
+	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.30);
+	padding: 20px;
+
+	&:hover {
+		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+
+		transition-delay: 0s;
+	}
+
+	.btn {
+		margin-top: 20px;
+		color: white;
+	}
+
 }
 
 

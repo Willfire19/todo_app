@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # @todos = @user.todos.paginate(page: params[:page])
-    # @lists = @user.lists
+    @lists = @user.lists
 
     respond_to do |format|
       format.html # show.html.erb
