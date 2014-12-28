@@ -96,4 +96,11 @@ class ListsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def correct_user
+      @list = current_user.lists.find_by_id(params[:id])
+      redirect_to root_url if @list.nil?
+    end
 end
