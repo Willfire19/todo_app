@@ -81,6 +81,7 @@ class TodosController < ApplicationController
         # format.html { redirect_to user_todo_path, notice: 'Todo was successfully updated.' }
         format.html { redirect_to session[:prev_page], notice: 'Todo was successfully updated.' }
         format.json { head :no_content }
+        format.js { render :js => "window.location.replace('#{home_path}');" }
       else
         format.html { render action: "edit" }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
