@@ -14,26 +14,35 @@
 				  <div class="col-xs-12 col-sm-3">
 
 				  	<ul class="nav nav-pills nav-stacked" style="margin-top: 20px;">
-					    <li role="presentation" class="new_form todo_form"><a href="#">New Todo</a></li>
-					    <li role="presentation" class="new_form"><a href="#">New List</a></li>				 
+					    <li role="presentation" class="new_form todo_form"><a href="#">+ New Todo</a></li>					    				 
 				    </ul>
+
+				    <hr>
+
+				    <div class="row">
+				    	<div class="col-xs-6">
+								<h4>Sort by List</h4>
+							</div>
+							<div class="col-xs-6">
+								<%= link_to '+ New List', new_user_list_path(current_user), :class=>"btn btn-primary btn-block", :style=>"color: white;" %>
+							</div>
+						</div>
 
 				    <ul class="nav nav-pills nav-stacked" style="margin-top: 20px;">
 					    <li role="presentation" class="list_sort active"><a href="#">All</a></li>				    
 					    <% @lists.each do |list| %>
 					      <%= render 'lists/list_sort', :list => list %>
 					    <% end %>
+					    <!-- <li role="presentation" class="new_form"><a href="#">+ New List</a></li> -->
+					    <!-- <li role="presentation" class="new_form"><%= link_to '+ New List', new_user_list_path(current_user) %></li> -->
 				    </ul>
 				  </div>
 				  <div class="col-xs-12 col-sm-9">
+				  	
 				  	<div class="row">
 				  		<%= render 'todos/form' %>
 				  	</div>
-				  	<div class="row">
-				  		<!-- <div class="col-xs-12 col-sm-10 col-sm-offset-1" style="height:100px;background-color:blue;" >
-				  		</div> -->
-				  		<%= render 'lists/form' %>
-				  	</div>
+						
 				    <div class="row" id="todos">
 				      <% @todos.each do |todo| %>
 				        <%= render 'todos/todo_material', :todo => todo %>

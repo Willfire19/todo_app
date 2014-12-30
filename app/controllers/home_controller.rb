@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     	@todos = @user.todos.paginate(page: params[:page])
     	@lists = @user.lists
 			@todo = current_user.todos.build
-			@list = current_user.lists.build
+			# @list = current_user.lists.build
 			@feed_items = current_user.feed.paginate(page: params[:page])
 		end
 	end

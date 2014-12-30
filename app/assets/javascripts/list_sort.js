@@ -5,10 +5,10 @@ $(document).ready(function() {
 
 	$('.new_form').click(function() {
 		$(this).toggleClass('active');
-		if ( $(this).text() == "New Todo" ) {
+		if ( $(this).text() == "+ New Todo" ) {
 			$('.todo_material_form').toggle("slide");
 		}
-		if ( $(this).text() == "New List" ) {
+		if ( $(this).text() == "+ New List" ) {
 			$('.list_form').toggle("slide");
 		}
 	})
