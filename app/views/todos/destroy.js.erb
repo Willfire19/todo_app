@@ -1,0 +1,4 @@
+var todo = $('#todo_<%= @todo.id %>');
+todo.slideUp("fast", "swing", function() {
+	$(this).remove();
+});

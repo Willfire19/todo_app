@@ -101,6 +101,7 @@ class TodosController < ApplicationController
       #format.html { redirect_to root_url }
       format.html { redirect_to :back }
       format.json { head :no_content }
+      format.js {}
     end
   end
 

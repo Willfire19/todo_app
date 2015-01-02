@@ -1,5 +1,5 @@
 
-<div class="col-xs-12 col-sm-10 col-sm-offset-1" >
+<div class="col-xs-12 col-sm-10 col-sm-offset-1" id="todo_<%= todo.id %>">
 	<div class="todo_material">
 		<div class="row advanced">
 			<% if todo.list!= nil %>
@@ -22,7 +22,7 @@
 		<div class="row default">
 			<div class="col-xs-4 links"><%= link_to 'SHOW', user_todo_path(current_user, todo) %></div>
 			<div class="col-xs-4 links"><%= link_to 'EDIT', edit_user_todo_path(current_user, todo) %></div>
-			<div class="col-xs-4 links"><%= link_to "DELETE", user_todo_path(current_user, todo), method: :delete, data: { confirm: "You sure?" }, title: todo.entry %></div>
+			<div class="col-xs-4 links"><%= link_to "DELETE", user_todo_path(current_user, todo), method: :delete, data: { confirm: "You sure?" }, remote: true, title: todo.entry %></div>
 		</div>
 		<% end %>
 	</div>
