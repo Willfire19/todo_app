@@ -1,29 +1,30 @@
+<div class="todo_card">
+	<div class="col-xs-12 col-sm-10 col-sm-offset-1" id="todo_<%= todo.id %>">
+		<div class="todo_material">
+			<div class="row advanced">
+				<% if todo.list!= nil %>
+					<div class="col-xs-8 col-xs-offset-2 listName_material"><h3><%= todo.list.name %></h3></div>
+				<% end %>
+			</div>
+			<div class="row advanced">
+				<div class="col-xs-12 status_material">Status: <%= todo.status %></div><br>
+			</div>
+			<div class="row default" id="borderBottom">
+				<div class="col-xs-12 entry_material"><%= todo.entry %></div>	
+			</div>
+			<div class="row advanced" id="padBottom">
+				<div class="col-xs-4 numbers_material"><h4>Difficulty</h4> <%= todo.difficulty %></div>
+				<div class="col-xs-4 numbers_material"><h4>Priority</h4> <%= todo.priority %></div>
+				<div class="col-xs-4 dueDate_material"><h4>Due Date</h4><%= l todo.dueDate, format: :duedate %></div>
+			</div>
 
-<div class="col-xs-12 col-sm-10 col-sm-offset-1" id="todo_<%= todo.id %>">
-	<div class="todo_material">
-		<div class="row advanced">
-			<% if todo.list!= nil %>
-				<div class="col-xs-8 col-xs-offset-2 listName_material"><h3><%= todo.list.name %></h3></div>
+			<% if current_user?(todo.user) %>
+			<div class="row default">
+				<!-- <div class="col-xs-4 links"><%= link_to 'SHOW', user_todo_path(current_user, todo) %></div> -->
+				<div class="col-xs-6 links"><%= link_to 'EDIT', edit_user_todo_path(current_user, todo) %></div>
+				<div class="col-xs-6 links"><%= link_to "DELETE", user_todo_path(current_user, todo), method: :delete, data: { confirm: "You sure?" }, remote: true, title: todo.entry %></div>
+			</div>
 			<% end %>
 		</div>
-		<div class="row advanced">
-			<div class="col-xs-12 status_material">Status: <%= todo.status %></div><br>
-		</div>
-		<div class="row default" id="borderBottom">
-			<div class="col-xs-12 entry_material"><%= todo.entry %></div>	
-		</div>
-		<div class="row advanced" id="padBottom">
-			<div class="col-xs-4 numbers_material"><h4>Difficulty</h4> <%= todo.difficulty %></div>
-			<div class="col-xs-4 numbers_material"><h4>Priority</h4> <%= todo.priority %></div>
-			<div class="col-xs-4 dueDate_material"><h4>Due Date</h4><%= l todo.dueDate, format: :duedate %></div>
-		</div>
-
-		<% if current_user?(todo.user) %>
-		<div class="row default">
-			<!-- <div class="col-xs-4 links"><%= link_to 'SHOW', user_todo_path(current_user, todo) %></div> -->
-			<div class="col-xs-6 links"><%= link_to 'EDIT', edit_user_todo_path(current_user, todo) %></div>
-			<div class="col-xs-6 links"><%= link_to "DELETE", user_todo_path(current_user, todo), method: :delete, data: { confirm: "You sure?" }, remote: true, title: todo.entry %></div>
-		</div>
-		<% end %>
 	</div>
 </div>
