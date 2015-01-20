@@ -19,8 +19,8 @@ jQuery.fn.todoAdvanced = function() {
 jQuery.fn.sortTodosByStatus = function() {
 	
 	this.has(".status_material:contains('Complete!')").insertAfter('#complete');
-	this.has(".status_material:contains('In Progress')").insertAfter('#todosToBeDone');
-	this.has(".status_material:contains('To Do')").insertAfter('#todosToBeDone');
+	// this.has(".status_material:contains('In Progress')").insertAfter('#todosToBeDone');
+	// this.has(".status_material:contains('To Do')").insertAfter('#todosToBeDone');
 }
 
 $(document).ready(function() {

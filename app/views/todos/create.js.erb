@@ -1,6 +1,6 @@
 // $("<%= j render 'todo_material', :todo => @todo %>").prependTo("#todos");
 var todo = $("<%= j render 'todo_material', :todo => @todo %>").hide();
-todo.prependTo("#todos");
+todo.prependTo("#todosToBeDone");
 todo.find('.todo_material').todoStatus();
 todo.todoAdvanced();
 todo.show('slide');

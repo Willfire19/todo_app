@@ -51,12 +51,14 @@
 				  	</div>
 						
 				    <div class="row" id="todos">
-
-				    	<% @todos.each do |todo| %>
-				        <%= render 'todos/todo_material', :todo => todo %>
-				      <% end %>
 				    	
-				    	<h3 class="col-xs-12 col-sm-10 col-sm-offset-1" id="todosToBeDone">Todos to be Done</h3>
+				    	<h3 class="col-xs-12 col-sm-10 col-sm-offset-1">Todos to be Done</h3>
+
+				    	<div id="todosToBeDone">
+					    	<% @todos.each do |todo| %>
+					        <%= render 'todos/todo_material', :todo => todo %>
+					      <% end %>
+					    </div>
 
 					    <h3 class="col-xs-12 col-sm-10 col-sm-offset-1" id="complete">Complete</h3>
 
