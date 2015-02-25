@@ -10,8 +10,14 @@ jQuery.fn.todoAdvanced = function() {
 
 	this.find('.advanced').hide();
 
-	this.click(function() {
-		$(this).find('.advanced').slideToggle();
+	var todo = this;
+	var expand_button = this.find("button");
+
+	expand_button.click(function() {
+		
+		$(this).parent().parent().parent().find('.advanced').slideToggle();
+		$(this).find("span").toggleClass("glyphicon-chevron-right glyphicon-chevron-down");
+	
 	});
 
 }

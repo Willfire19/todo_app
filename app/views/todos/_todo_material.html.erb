@@ -10,7 +10,12 @@
 				<div class="col-xs-12 status_material">Status: <%= todo.status %></div><br>
 			</div>
 			<div class="row default" id="borderBottom">
-				<div class="col-xs-12 entry_material"><%= todo.entry %></div>	
+				<div class="col-xs-1">
+					<button type="button" class="btn btn-default btn-block" aria-label="Expand Todo" id="expand_material">
+					  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					</button>
+				</div>
+				<div class="col-xs-11 entry_material"><%= todo.entry %></div>	
 			</div>
 			<div class="row advanced" id="padBottom">
 				<div class="col-xs-4 numbers_material"><h4>Difficulty</h4> <%= todo.difficulty %></div>
