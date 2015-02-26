@@ -1,6 +1,9 @@
 <div class="todo_card">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1" id="todo_<%= todo.id %>">
 		<div class="todo_material">
+			<button type="button" class="btn btn-default expand_material" aria-label="Expand Todo">
+			  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</button>
 			<div class="row advanced">
 				<% if todo.list!= nil %>
 					<div class="col-xs-8 col-xs-offset-2 listName_material"><h3><%= todo.list.name %></h3></div>
@@ -11,9 +14,7 @@
 			</div>
 			<div class="row default" id="borderBottom">
 				<div class="col-xs-1">
-					<button type="button" class="btn btn-default btn-block" aria-label="Expand Todo" id="expand_material">
-					  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-					</button>
+					
 				</div>
 				<div class="col-xs-11 entry_material"><%= todo.entry %></div>	
 			</div>
