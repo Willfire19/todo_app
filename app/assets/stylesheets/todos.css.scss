@@ -5,8 +5,10 @@
 .todo_card {
 
 	.expand_material {
-		z-index: 999;
-		position: absolute;
+		z-index: 9999;
+		// position: absolute;
+		margin: -10px;
+		// float: right;
 	}
 
 }
