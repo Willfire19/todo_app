@@ -15,7 +15,7 @@ describe "Static pages"  do
 				visit root_path
 			end
 
-			it { should have_link("Add a New List!", href: new_user_list_path(user)) }
+			it { should have_link("+ New List", href: new_user_list_path(user)) }
 
 			# it "should render the user's feed" do
 			# 	user.feed.each do |item|
@@ -23,16 +23,16 @@ describe "Static pages"  do
 			# 	end
 			# end
 
-			describe "follower/following counts" do
-				let(:other_user) { FactoryGirl.create(:user) }
-				before do
-					other_user.follow!(user)
-					visit root_path
-				end
+			# describe "follower/following counts" do
+			# 	let(:other_user) { FactoryGirl.create(:user) }
+			# 	before do
+			# 		other_user.follow!(user)
+			# 		visit root_path
+			# 	end
 
-				it { should have_link("0 following", href: following_user_path(user)) }
-				it { should have_link("1 followers", href: followers_user_path(user)) }
-			end
+			# 	it { should have_link("0 following", href: following_user_path(user)) }
+			# 	it { should have_link("1 followers", href: followers_user_path(user)) }
+			# end
 		end
 	end
 
