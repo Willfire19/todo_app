@@ -24,6 +24,9 @@ group :development, :test do
 	# gem 'gaurd-spork', '1.2.0'
 	# gem 'childprocess', '0.3.6'
 	# gem 'spork', '0.9.2'
+
+	# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+	gem 'therubyracer', :platforms => :ruby
 end
 
 # Gems used only for assets and not required
@@ -31,8 +34,7 @@ end
 gem 'sass-rails',   '>= 3.2'
 gem 'coffee-rails', '4.0.1'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', :platforms => :ruby
+
 
 gem 'uglifier', '~> 2.5.0'
 
