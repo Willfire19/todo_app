@@ -23,7 +23,7 @@ describe "Todo pages" do
         select "1", :from => "todo_dueDate_3i"
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
-        fill_in 'Tag', with: "David Givens"
+        # fill_in 'Tag', with: "David Givens"
         select "Uncategorized", :from => "List"
       end
 
@@ -50,7 +50,7 @@ describe "Todo pages" do
         select "1", :from => "todo_dueDate_3i"
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
-        fill_in 'Tag', with: "David Givens"
+        # fill_in 'Tag', with: "David Givens"
         select "In Progress", :from => "todo_status"
         select "Uncategorized", :from => "List"
       end
@@ -85,7 +85,7 @@ describe "Todo pages" do
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
-        fill_in 'Tag', with: "Devin Cobb"
+        # fill_in 'Tag', with: "Devin Cobb"
         select "Uncategorized", :from => "List"
         click_button "Submit"
       end
@@ -111,7 +111,7 @@ describe "Todo pages" do
         fill_in 'Difficulty', with: 1
         fill_in 'Priority', with: 1
         select "In Progress", :from => "todo_status"
-        fill_in 'Tag', with: "J.R Meyers"
+        # fill_in 'Tag', with: "J.R Meyers"
         select "Uncategorized", :from => "List"
         click_button "Submit"
       end
