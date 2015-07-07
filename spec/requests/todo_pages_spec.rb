@@ -128,7 +128,7 @@ describe "Todo pages" do
       before { visit root_path }
 
       it "should delete a todo" do
-        expect { click_link "Delete" }.to change(Todo, :count).by(-1)
+        expect { click_link "DELETE" }.to change(Todo, :count).by(-1)
       end
     end
 
