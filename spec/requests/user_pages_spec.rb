@@ -52,69 +52,69 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
-    let!(:m1) { FactoryGirl.create(:todo, user: user, entry: "Michael Bolt") }
-    let!(:m2) { FactoryGirl.create(:todo, user: user, entry: "David Givens") }
+    let!(:m1) { FactoryGirl.create(:list, user: user, name: "Grocery List") }
+    let!(:m2) { FactoryGirl.create(:list, user: user, name: "Shopping List") }
 
     before { visit user_path(user) }
 
     it { should have_selector('h1',     text: user.username) }
     it { should have_selector('title',  text: user.username) }
 
-    describe "todos" do
-      it { should have_content(m1.entry) }
-      it { should have_content(m2.entry) }
-      it { should have_content(user.todos.count) }
+    describe "lists" do
+      it { should have_content(m1.name) }
+      it { should have_content(m2.name) }
+      it { should_not have_content(user.lists.count) }
     end
 
-    describe "follow/unfollow buttons" do
-      let(:other_user) { FactoryGirl.create(:user) }
-      before { sign_in user }
+    # describe "follow/unfollow buttons" do
+    #   let(:other_user) { FactoryGirl.create(:user) }
+    #   before { sign_in user }
 
-      describe "following a user" do
-        before{ visit user_path(other_user) }
+    #   describe "following a user" do
+    #     before{ visit user_path(other_user) }
 
-        it "should increment the followed user count" do
-          expect do
-            click_button "Follow"
-          end.to change(user.followed_users, :count).by(1)
-        end
+    #     it "should increment the followed user count" do
+    #       expect do
+    #         click_button "Follow"
+    #       end.to change(user.followed_users, :count).by(1)
+    #     end
 
-        it "should increment the other user's followers count" do
-          expect do
-            click_button "Follow"
-          end.to change(other_user.followers, :count).by(1)
-        end
+    #     it "should increment the other user's followers count" do
+    #       expect do
+    #         click_button "Follow"
+    #       end.to change(other_user.followers, :count).by(1)
+    #     end
 
-        describe "toggling the button" do
-          before { click_button "Follow" }
-          it { should have_xpath("//input[@value='Unfollow']") }
-        end
-      end
+    #     describe "toggling the button" do
+    #       before { click_button "Follow" }
+    #       it { should have_xpath("//input[@value='Unfollow']") }
+    #     end
+    #   end
 
-      describe "unfollowing a user" do
-        before do
-          user.follow!(other_user)
-          visit user_path(other_user)
-        end
+    #   describe "unfollowing a user" do
+    #     before do
+    #       user.follow!(other_user)
+    #       visit user_path(other_user)
+    #     end
 
-        it "should decrement the followed user count" do
-          expect do
-            click_button "Unfollow"
-          end.to change(user.followed_users, :count).by(-1)
-        end
+    #     it "should decrement the followed user count" do
+    #       expect do
+    #         click_button "Unfollow"
+    #       end.to change(user.followed_users, :count).by(-1)
+    #     end
 
-        it "should decrement the other user's followers count" do
-          expect do
-            click_button "Unfollow"
-          end.to change(other_user.followers, :count).by(-1)
-        end
+    #     it "should decrement the other user's followers count" do
+    #       expect do
+    #         click_button "Unfollow"
+    #       end.to change(other_user.followers, :count).by(-1)
+    #     end
 
-        describe "toggling the button" do
-          before { click_button "Unfollow" }
-          it { should have_xpath("//input[@value='Follow']") }
-        end
-      end
-    end
+    #     describe "toggling the button" do
+    #       before { click_button "Unfollow" }
+    #       it { should have_xpath("//input[@value='Follow']") }
+    #     end
+    #   end
+    # end
   end
 
   describe "signup page" do
@@ -146,7 +146,7 @@ describe "User pages" do
         before { click_button submit }
         let(:user) { User.find_by_email('spnrd232@yahoo.com') }
 
-        it { should have_selector('title', text: user.username) }
+        # it { should have_selector('title', text: user.username) }
         # it { should have_selector('div.alert.alert-success', text: 'Welcome') }
         it { should have_link('Sign out') }
       end
